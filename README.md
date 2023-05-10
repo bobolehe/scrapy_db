@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 封装数据库
 
 封装数据库操作方法，原因：避免在爬虫程序中出现sql等数据库操作语句
@@ -123,3 +124,7 @@ mycursor.execute("SHOW TABLES")
 
 ```
 
+=======
+# scrapy_db
+爬虫程序数据库操作功能封装
+>>>>>>> fff4562327f4b093bba755966caccaf6a5cdb5c2
