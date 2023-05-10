@@ -1,6 +1,0 @@
-2023-04-18 15:26:31 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://attack.mitre.org/groups/> (failed 3 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
-2023-04-18 15:26:31 [scrapy.core.scraper] ERROR: Error downloading <GET https://attack.mitre.org/groups/>
-Traceback (most recent call last):
-  File "D:\anaconda3\lib\site-packages\scrapy\core\downloader\middleware.py", line 52, in process_request
-    return (yield download_func(request=request, spider=spider))
-twisted.internet.error.TCPTimedOutError: TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
