@@ -5,13 +5,14 @@
 
 from scrapy import signals
 import random
-from attgroups import settings
-from attgroups.toolclass.proxy_module import GetProxy
+from attsoftware import settings
+from attsoftware.toolclass.proxy_module import GetProxy
+
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 
 
-class AttgroupsSpiderMiddleware:
+class AttsoftwareSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.
@@ -58,7 +59,7 @@ class AttgroupsSpiderMiddleware:
         spider.logger.info("Spider opened: %s" % spider.name)
 
 
-class AttgroupsDownloaderMiddleware:
+class AttsoftwareDownloaderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.

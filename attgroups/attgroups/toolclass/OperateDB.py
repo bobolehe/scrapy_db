@@ -5,8 +5,8 @@ import datetime
 
 class MysqlData:
     def __init__(self):
-        self.db = None
-        self.cursor = None
+        self.DB = None
+        self.curr = None
         self.data = None
         self.table = None
         self.ks_time = datetime.datetime.now()
@@ -22,8 +22,8 @@ class MysqlData:
         """
         try:
             # 连接数据库并创建游标
-            self.db = mysql.connector.connect(host=host, user=user, password=password, port=port)
-            self.cursor = self.db.cursor()
+            self.DB = mysql.connector.connect(host=host, user=user, password=password, port=port)
+            self.curr = self.DB.cursor()
         except:
             # 返回结果字典
             retu = {
@@ -34,8 +34,8 @@ class MysqlData:
             # 连接成功返回结果字典，携带数据库对象以及游标对象
             retu = {
                 'error': "数据库链接成功",
-                'cursor': self.cursor,
-                'db': self.db
+                'cursor': self.curr,
+                'db': self.DB
             }
             return retu
 
@@ -50,16 +50,16 @@ class MysqlData:
         sql = f"CREATE DATABASE IF NOT EXISTS {data}"
         try:
             # 执行创建数据库的sql
-            self.cursor.execute(sql)
-            self.db.commit()
+            self.curr.execute(sql)
+            self.DB.commit()
         except:
             # 失败回滚，返回失败信息
-            self.db.rollback()
+            self.DB.rollback()
             return f"判断数据库{data}是否存在失败"
         else:
             # 数据库存在无需创建
-            self.cursor.execute(f'use {data};')
-            return f"数据库{data}存在无需创建"
+            self.curr.execute(f'use {data};')
+            return f"数据库{data}切换成功"
 
     def table_exists(self, table='tteexxtt'):
         """
@@ -71,8 +71,8 @@ class MysqlData:
         self.table = table
         sql = "show tables"
         try:
-            self.cursor.execute(sql)
-            tables = self.cursor.fetchall()
+            self.curr.execute(sql)
+            tables = self.curr.fetchall()
         except:
             return "查询数据库表结构失败"
         else:
@@ -94,11 +94,11 @@ class MysqlData:
                               PRIMARY KEY (`id`) USING BTREE
                             ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
                             """
-                self.cursor.execute(sql)
-                self.db.commit()
+                self.curr.execute(sql)
+                self.DB.commit()
                 return f"数据表{table}不存在进行创建表结构成功"
             except:
-                self.db.rollback()
+                self.DB.rollback()
                 return f"数据表{table}不存在进行创建表结构失败,请提供正确的spl语句"
 
     def disconnect(self):
@@ -107,17 +107,17 @@ class MysqlData:
         :return: 返回提示信息
         """
         try:
-            sql = f"SELECT * FROM {self.table} WHERE stime >= '{self.ks_time}';"
+            sql = f"SELECT url FROM {self.table} WHERE stime >= '{self.ks_time}';"
             # sql = "SELECT * FROM eol WHERE stime >= '2023-04-11 17:16:10';"
-            self.cursor.execute(sql)
-            result = self.cursor.fetchall()
+            self.curr.execute(sql)
+            result = self.curr.fetchall()
         except:
-            self.cursor.close()
-            self.db.close()
+            self.curr.close()
+            self.DB.close()
             return '查询失败'
         else:
-            self.cursor.close()
-            self.db.close()
+            self.curr.close()
+            self.DB.close()
             return f"此次数据实例化{len(result)}"
 
     def create_fields(self, field=str(), fields=list()):
@@ -139,8 +139,8 @@ class MysqlData:
                     sql_new = sql + f"ADD COLUMN `{k}` int(0) NOT NULL AUTO_INCREMENT FIRST,ADD PRIMARY KEY (`{k}`);"
                 else:
                     sql_new = sql + f"ADD COLUMN `{k}` json NULL AFTER `{field}`;"
-                self.cursor.execute(sql_new)
-                self.db.commit()
+                self.curr.execute(sql_new)
+                self.DB.commit()
         except:
             return f"{self.table}表结构字段添加创建失败"
         else:
@@ -158,8 +158,8 @@ class MysqlData:
         try:
             sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'" % (
                 self.data, self.table)
-            self.cursor.execute(sql)
-            results = self.cursor.fetchall()
+            self.curr.execute(sql)
+            results = self.curr.fetchall()
         except:
             return '查询数据表所有字段失败'
         # 表结构字段进行格式化
@@ -195,11 +195,13 @@ class MysqlData:
         # sql语句
         sql = f"insert into {self.table}({','.join(keys)}) values ({'%s,' * ((len(values) - 1))}%s);"
         try:
-            self.cursor.execute(sql, tuple(values))
-            self.db.commit()
+            self.curr.execute(f'use {self.data}')
+            self.curr.execute(sql, tuple(values))
+            self.DB.commit()
         except:
-            self.db.rollback()
-            return '数据实例化存储失败'
+            self.DB.rollback()
+
+            return '数据实例化存储失败' + sql % tuple(values)
         else:
             return '数据实例化存储成功'
 
@@ -224,17 +226,22 @@ class MysqlData:
             }
             return err
 
-        sql = f"select url from {self.table} where {field}='{price}';"
+        sql = f"SELECT url FROM {self.table} where {field}='{price}';"
 
         try:
-            self.cursor.execute(sql)
-            result = self.cursor.fetchone()
+            self.curr.close()
+            self.curr = self.DB.cursor()
+            self.curr.execute(f'use {self.data};')
+            # 执行查询语句
+            self.curr.execute(sql)
+            result = self.curr.fetchall()
         except:
             err = {
                 'error': 104,
-                'log': f'{sql}输出查询失败'
+                'log': f'{sql % price}输出查询失败'
             }
             return err
+
         else:
             if result:
                 err = {
@@ -249,14 +256,27 @@ class MysqlData:
 
             return err
 
+    def conn_cur(self):
+        """
+        设置数据库与游标
+        :param base: 数据库
+        :return:
+        """
+        self.DB.select_db(self.data)
+        if self.curr:
+            self.curr.close()
+        self.curr = self.DB.curr()
+
 
 if __name__ == '__main__':
     data = MysqlData()
     retu = data.connect_data()
+    print(retu)
     if retu.get('db'):
         # 连接成功数据库，进入数据库和查看表结构
         print(data.data_exists(data='spiders'))
         print(data.table_exists(table='attgroups'))
+        t = str(datetime.datetime.now())
         # 测试item数据
         item = {'Associated_Group_Descriptions': '[{"name": "Comment Crew", "Description": '
                                                  '"[1]https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
@@ -472,14 +492,14 @@ if __name__ == '__main__':
                                     'Department, commonly known by its Military Unit Cover '
                                     'Designator (MUCD) as Unit 61398. "',
                 'name': '"APT1"',
-                'stime': '2023-05-04 15:34:22.525797',
+                'stime': t,
                 'title_id': '"G0006"',
                 'url': 'https://attack.mitre.org/groups/G0006/'}
         # 数据库和数据表存在或创建完成后,传入item对象，创建剩余的字段结构
         print(data.field_exists(fields=item))
-        # 添加测试数据
-        print(data.add_data(item=item))
-        #
-        print(data.price_exists(field='url', price='https://attack.mitre.org/groups/G0018/'))
+
+        if data.price_exists(field='url', price='https://attack.mitre.org/groups/G0006/')['error'] == 101:
+            # 添加测试数据
+            print(data.add_data(item=item))
         # 关闭数据库
         print(data.disconnect())

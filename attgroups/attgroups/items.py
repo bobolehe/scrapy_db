@@ -8,9 +8,9 @@ import scrapy
 
 class AttgroupsItem(scrapy.Item):
     # define the fields for your item here like:
-
-    name = scrapy.Field()
+    stime = scrapy.Field()
     url = scrapy.Field()
+    name = scrapy.Field()
     title_id = scrapy.Field()
     Associated_Groups = scrapy.Field()
     Created = scrapy.Field()

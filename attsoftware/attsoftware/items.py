@@ -6,17 +6,12 @@
 import scrapy
 
 
-class AttgroupsItem(scrapy.Item):
+class AttsoftwareItem(scrapy.Item):
     # define the fields for your item here like:
     stime = scrapy.Field()
     url = scrapy.Field()
     name = scrapy.Field()
-    title_id = scrapy.Field()
-    Associated_Groups = scrapy.Field()
-    Created = scrapy.Field()
-    Last_Modified = scrapy.Field()
+    card = scrapy.Field()
     description_body = scrapy.Field()
-    Techniques_Used = scrapy.Field()
-    Associated_Group_Descriptions = scrapy.Field()
+    Techniques = scrapy.Field()
     Software = scrapy.Field()
-

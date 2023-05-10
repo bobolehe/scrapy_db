@@ -1,19 +1,19 @@
-import datetime
-import json
-import re
 import scrapy
+import re
+import json
 import logging
-from attgroups.items import AttgroupsItem
-from attgroups import settings
+import datetime
+from attsoftware import settings
+from attsoftware.items import AttsoftwareItem
 
 # 实例化日志类
 logger = logging.getLogger(__name__)
 
 
-class GroupsSpider(scrapy.Spider):
-    name = "groups"
+class SoftwareSpider(scrapy.Spider):
+    name = "software"
     # allowed_domains = ["www.xxx.com"]
-    start_urls = ["https://attack.mitre.org/groups/"]
+    start_urls = ["https://attack.mitre.org/software/"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,17 +26,19 @@ class GroupsSpider(scrapy.Spider):
         self.page_max = kwargs.get('page') if kwargs.get('page') else 10
 
     def parse(self, response):
-        logger.error("爬取详情页名称与链接")
         # .extract_first()
+        logger.error("抓取详情页地址")
         sidenav_list = response.xpath('//*[@id="v-tab"]/div[1]/div/div[@class="sidenav-list"]/div')
-        for sidenav in sidenav_list[0:4]:
-            item = AttgroupsItem()
+        for sidenav in sidenav_list:
+            item = AttsoftwareItem()
             item['name'] = json.dumps(sidenav.xpath('./div/a/text()').extract_first().strip())
 
             if not sidenav.xpath('./div/@id').extract_first() == "0-0":
                 # print(sidenav.xpath('./div/a/@href').extract_first())
+
                 url = 'https://attack.mitre.org' + sidenav.xpath('./div/a/@href').extract_first()
 
+                logger.error(f"爬取到名称{item['name']}地址{url}")
                 # 导入存储在类中的数据库类 查询是否在数据库中存在
                 data = self.data
                 self.data_max += 1
@@ -63,34 +65,14 @@ class GroupsSpider(scrapy.Spider):
                     description_data.remove(description_body[index])
             item['description_body'] = json.dumps("".join(description_data))
 
-            item['title_id'] = json.dumps(''.join(response.xpath('//*[@id="card-id"]/div/text()').extract()).strip())
-
-            card_data_list = response.xpath('//*[@id="card-id"]/following-sibling::*')
+            card_data_list = response.xpath(
+                '//*[@id="v-attckmatrix"]//div[@class="row"]//div[@class="card-body"]/div/div[2]')
+            card = {}
             for card_data in card_data_list:
-                title = ''.join(card_data.xpath('./div/span//text()').extract()).strip()
-                if "Created" in title:
-                    item['Created'] = ''.join(card_data.xpath('./div/text()').extract()).strip()
-                elif "Last Modified" in title:
-                    item['Last_Modified'] = ''.join(card_data.xpath('./div/text()').extract()).strip()
-                elif "Associated Groups" in title:
-                    item['Associated_Groups'] = ''.join(card_data.xpath('./div/text()').extract()).strip().replace(': ',
-                                                                                                                   "")
-            item['Associated_Groups'] = json.dumps(
-                item['Associated_Groups'] if item.get('Associated_Groups') else "None")
-            item['Created'] = json.dumps(item['Created'] if item.get('Created') else "None")
-            item['Last_Modified'] = json.dumps(item['Last_Modified'] if item.get('Last_Modified') else "None")
-
-            # 获取 Associated Group Descriptions
-            aliasDescription_list = response.xpath('//*[@id="aliasDescription"]/following-sibling::table[1]/tbody/tr')
-            aliasDescription = []
-            for tr in aliasDescription_list:
-                name = tr.xpath('./td[1]/text()').extract_first().strip()
-                Description_url = ' '.join(tr.xpath('./td[2]//span//a/@href').extract())
-                Description = ''.join(tr.xpath('./td[2]/p//text()').extract()) + Description_url
-                aliasDescription.append({"name": name, "Description": Description})
-            if not aliasDescription:
-                aliasDescription = 'None'
-            item['Associated_Group_Descriptions'] = json.dumps(aliasDescription)
+                key = ''.join(card_data.xpath('./span/text()').extract()).replace(":", "").strip()
+                value = ''.join(card_data.xpath('./text()').extract()).replace(":", "").strip()
+                card[key] = value
+            item["card"] = json.dumps(card)
 
             # 获取techniques内容
             techniques_list = response.xpath('//*[@id="techniques"]/following-sibling::table[1]/tbody/tr')
@@ -133,21 +115,19 @@ class GroupsSpider(scrapy.Spider):
                         word2 = Use_url[key]
                         Use = Use.replace(word1, word2)
                     techniques.append({"Domain": Domain, "id": id, "Name": Name, "Use": Use})
-            item['Techniques_Used'] = json.dumps(techniques)
+            item['Techniques'] = json.dumps(techniques)
 
             # 获取Software内容
-            Software_list = response.xpath('//*[@id="software"]/following-sibling::table[1]/tbody/tr')
+            Software_list = response.xpath('//*[@id="groups"]/following-sibling::table[1]/tbody/tr')
             Software = []
             for software in Software_list:
                 ID = software.xpath('./td[1]/a/text()').extract_first()
                 Name = software.xpath('./td[2]/a/text()').extract_first()
                 References = software.xpath('./td[3]//a/@href').extract()
-                Techniques = ''.join(software.xpath('./td[4]//a/text()').extract())
-                Software.append({'ID': ID, 'Name': Name, 'References': References, 'Techniques': Techniques})
+                Software.append({'ID': ID, 'Name': Name, 'References': References})
             item['Software'] = json.dumps(Software)
             item['stime'] = str(datetime.datetime.now())
-
+            # print(item)
             yield item
-
         except:
             logger.error(f"{response.url}数据缓存失败")
