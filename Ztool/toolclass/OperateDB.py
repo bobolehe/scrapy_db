@@ -27,7 +27,7 @@ class MysqlData:
                 user=user,
                 password=password,
                 port=port,
-                auth_plugin='mysql_native_password'
+                # auth_plugin='mysql_native_password'
             )
             self.curr = self.DB.cursor()
         except:
@@ -139,8 +139,9 @@ class MysqlData:
                 # 添加第一条字段依据原有字段进行添加
                 if k == 'url':
                     sql_new = sql + f"ADD COLUMN `{k}` varchar(255) NULL DEFAULT '' AFTER `{field}`;"
-                elif k == 'stime':
-                    sql_new = sql + f"ADD COLUMN `{k}` datetime(255) NULL ON UPDATE CURRENT_TIMESTAMP(255) AFTER `{field}`;"
+                elif 'time' in k:
+                    sql_new = sql + f"ADD COLUMN `{k}` datetime(0) NULL AFTER `{field}`;"
+                    # sql_new = sql + f"ADD COLUMN `{k}` datetime(255) NULL ON UPDATE CURRENT_TIMESTAMP(255) AFTER `{field}`;"
                 elif k == 'id':
                     sql_new = sql + f"ADD COLUMN `{k}` int(0) NOT NULL AUTO_INCREMENT FIRST,ADD PRIMARY KEY (`{k}`);"
                 else:
@@ -211,7 +212,7 @@ class MysqlData:
         else:
             return '数据实例化存储成功'
 
-    def price_exists(self, field=str(), price=None):
+    def price_exists(self, field=str(), price=None, field2=None, price2=None):
         """
         验证数据是否存在，指定字段，传入字段查询数据
         :param field: 传入指定字段，字符串格式
@@ -231,24 +232,18 @@ class MysqlData:
                 'log': "请指定查询数据字段名，一般使用url字段查询"
             }
             return err
-
-        sql = f"SELECT url FROM {self.table} where {field}='{price}';"
-
-        try:
-            self.curr.close()
-            self.curr = self.DB.cursor()
-            self.curr.execute(f'use {self.data};')
-            # 执行查询语句
-            self.curr.execute(sql)
-            result = self.curr.fetchall()
-        except:
-            err = {
-                'error': 104,
-                'log': f'{sql % price}输出查询失败'
-            }
-            return err
-
-        else:
+        if not field2:
+            sql = f"SELECT {field} FROM {self.table} where {field}=%s;"
+            try:
+                # 执行查询语句
+                self.curr.execute(sql, (price,))
+                result = self.curr.fetchall()
+            except Exception as e:
+                err = {
+                    'error': 104,
+                    'log': f'{field}字段 数据查询失败{str(e)}'
+                }
+                return err
             if result:
                 err = {
                     'error': 102,
@@ -259,19 +254,57 @@ class MysqlData:
                     'error': 101,
                     'log': f'无{price}链接数据'
                 }
-
             return err
+        else:
+            if not price2:
+                err = {
+                    'error': 103,
+                    'log': "请指定查询数据字段名，一般使用url字段查询"
+                }
+                return err
 
-    def conn_cur(self):
+
+
+
+
+    def query_page(self, field=None, name=None, fields=None):
         """
-        设置数据库与游标
-        :param base: 数据库
+        增量式更新功能情况一，分类指定字段后获取最大页数
+        :param name: 指定页数字段名称
+        :param fields: 对于数据库中抓取多个类型的url时候可以使用
+        :param field: 增加判断条件，比如满足字段pro下的值为coles的数据再进行判断页数字段的最大值
         :return:
         """
-        self.DB.select_db(self.data)
-        if self.curr:
-            self.curr.close()
-        self.curr = self.DB.curr()
+
+        if fields:
+            sql = f'SELECT MAX({name}) FROM {self.table} WHERE {fields} = "{field}";'
+
+            try:
+                # 执行查询语句
+                self.curr.execute(sql)
+                result = self.curr.fetchall()
+                # result = self.curr.fetchone()
+            except:
+
+                return 404
+            else:
+                result_list = [row for row in result]
+                result_list = [row for row in result_list[0]]
+                return result_list
+        else:
+            sql = f"SELECT MAX({name}) FROM {self.table};"
+
+            try:
+                # 执行查询语句
+                self.curr.execute(sql)
+                # result = self.curr.fetchall()
+                result = self.curr.fetchall()
+            except:
+                return 404
+            else:
+                result_list = [row for row in result]
+                result_list = [row for row in result_list[0]]
+                return result_list
 
 
 if __name__ == '__main__':
