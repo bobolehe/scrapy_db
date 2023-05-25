@@ -269,7 +269,7 @@ class MysqlData:
 
     def query_page(self, field=None, name=None, fields=None):
         """
-        增量式更新功能情况一，分类指定字段后获取最大页数
+        增量式更新功能情况
         :param name: 指定页数字段名称
         :param fields: 对于数据库中抓取多个类型的url时候可以使用
         :param field: 增加判断条件，比如满足字段pro下的值为coles的数据再进行判断页数字段的最大值
