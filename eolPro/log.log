@@ -1,0 +1,170 @@
+2023-05-17 18:42:27 [eolPro.pipelines] ERROR: 数据库spiders存在无需创建
+2023-05-17 18:42:27 [eolPro.pipelines] ERROR: eoltest表结构字段无需创建
+2023-05-17 18:42:27 [eolPro.pipelines] ERROR: eoltest表结构字段无需创建
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/page/2/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/
+2023-05-17 18:43:58 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/2/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/4/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/4/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/3/
+2023-05-17 18:43:59 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/5/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/page/4/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/4/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/3/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/5/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/6/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/4/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/4/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/4/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/5/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/7/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/5/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/6/
+2023-05-17 18:44:00 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/5/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/5/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/6/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/6/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/7/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/8/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/8/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/6/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/9/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/7/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/6/
+2023-05-17 18:44:01 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/7/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/7/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/8/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/10/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/7/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/9/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/8/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/9/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/8/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/11/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/9/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/10/
+2023-05-17 18:44:02 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/8/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/12/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/10/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/9/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/11/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/10/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/11/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/11/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/9/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/13/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/12/
+2023-05-17 18:44:03 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/12/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/10/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/12/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/13/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/13/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/10/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/13/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/11/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/14/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/14/
+2023-05-17 18:44:04 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/14/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/11/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/15/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/12/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/15/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/12/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/16/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/14/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/page/15/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/13/
+2023-05-17 18:44:05 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/16/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/17/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/13/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/15/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/14/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/18/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/17/
+2023-05-17 18:44:06 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/15/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/14/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/16/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/18/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/16/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/19/
+2023-05-17 18:44:07 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/19/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/page/20/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/17/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/17/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/15/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/emc/page/20/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/18/
+2023-05-17 18:44:08 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/16/
+2023-05-17 18:44:09 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/19/
+2023-05-17 18:44:09 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/17/
+2023-05-17 18:44:10 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/dell/page/20/
+2023-05-17 18:44:10 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/18/
+2023-05-17 18:44:10 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/18/
+2023-05-17 18:44:10 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/19/
+2023-05-17 18:44:10 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/19/
+2023-05-17 18:44:11 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/page/20/
+2023-05-17 18:44:11 [eolPro.spiders.eol] ERROR: 爬取分页链接https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/page/20/
+2023-05-17 18:44:11 [eolPro.pipelines] ERROR: 数据总量为0,共有0条详情页无数据
+2023-05-17 18:44:11 [eolPro.pipelines] ERROR: 此次数据实例化0
+2023-05-17 18:45:40 [eolPro.pipelines] ERROR: 数据库spiders存在无需创建
+2023-05-17 18:45:40 [eolPro.pipelines] ERROR: eoltest表结构字段无需创建
+2023-05-17 18:45:40 [eolPro.pipelines] ERROR: eoltest表结构字段无需创建
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/dell/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:14 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/emc/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/dell/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/emc/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:35 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:38 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/dell/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/emc/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:56 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:48:59 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/dell/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/emc/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:17 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:20 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/> (failed 4 times): TCP connection timed out: 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/emc/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/fujitsu/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/hpe/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/teradata/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/cisco/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/dell/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [scrapy.downloadermiddlewares.retry] ERROR: Gave up retrying <GET https://serviceexpress.com/resources/eol-eosl-database/oem/juniper/> (failed 4 times): An error occurred while connecting: [Failure instance: Traceback (failure with no frames): <class 'twisted.internet.error.ConnectionLost'>: Connection to the other side was lost in a non-clean fashion: Connection lost.
+].
+2023-05-17 18:49:26 [eolPro.pipelines] ERROR: 数据总量为0,共有0条详情页无数据
+2023-05-17 18:49:26 [eolPro.pipelines] ERROR: 此次数据实例化0

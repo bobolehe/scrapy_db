@@ -1,0 +1,36 @@
+2023-06-06 09:31:43 [nvdPro.pipelines] ERROR: 消息通知发送成功
+2023-06-06 09:31:43 [nvdPro.pipelines] ERROR: 数据库spiders存在无需创建
+2023-06-06 09:31:44 [nvdPro.spiders.nvd] ERROR: 爬取分页https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=40&startIndex=0 下数据
+2023-06-06 09:31:44 [scrapy.core.scraper] ERROR: Spider error processing <GET https://services.nvd.nist.gov/rest/json/cves/2.0/?resultsPerPage=40&startIndex=0> (referer: None)
+Traceback (most recent call last):
+  File "D:\anaconda3\lib\site-packages\scrapy\utils\defer.py", line 257, in iter_errback
+    yield next(it)
+  File "D:\anaconda3\lib\site-packages\scrapy\utils\python.py", line 312, in __next__
+    return next(self.data)
+  File "D:\anaconda3\lib\site-packages\scrapy\utils\python.py", line 312, in __next__
+    return next(self.data)
+  File "D:\anaconda3\lib\site-packages\scrapy\core\spidermw.py", line 104, in process_sync
+    for r in iterable:
+  File "D:\anaconda3\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 28, in <genexpr>
+    return (r for r in result or () if self._filter(r, spider))
+  File "D:\anaconda3\lib\site-packages\scrapy\core\spidermw.py", line 104, in process_sync
+    for r in iterable:
+  File "D:\anaconda3\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 353, in <genexpr>
+    return (self._set_referer(r, response) for r in result or ())
+  File "D:\anaconda3\lib\site-packages\scrapy\core\spidermw.py", line 104, in process_sync
+    for r in iterable:
+  File "D:\anaconda3\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 27, in <genexpr>
+    return (r for r in result or () if self._filter(r, spider))
+  File "D:\anaconda3\lib\site-packages\scrapy\core\spidermw.py", line 104, in process_sync
+    for r in iterable:
+  File "D:\anaconda3\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 31, in <genexpr>
+    return (r for r in result or () if self._filter(r, response, spider))
+  File "D:\anaconda3\lib\site-packages\scrapy\core\spidermw.py", line 104, in process_sync
+    for r in iterable:
+  File "D:\crawler\nvdPro\nvdPro\spiders\nvd.py", line 105, in parse
+    item['cvss3'] = cvss3
+UnboundLocalError: local variable 'cvss3' referenced before assignment
+2023-06-06 09:31:44 [nvdPro.pipelines] ERROR: 数据总量为0,共有0条详情页无数据
+2023-06-06 09:31:44 [nvdPro.pipelines] ERROR: 程序执行数据实例化存储0
+2023-06-06 09:31:45 [nvdPro.pipelines] ERROR: 消息通知发送成功
+2023-06-06 09:31:46 [nvdPro.pipelines] ERROR: 任务日志发送成功
