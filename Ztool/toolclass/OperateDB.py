@@ -1,6 +1,7 @@
-import mysql.connector
-import re
 import datetime
+import re
+
+import mysql.connector
 
 
 class MysqlData:
@@ -27,13 +28,13 @@ class MysqlData:
                 user=user,
                 password=password,
                 port=port,
-                # auth_plugin='mysql_native_password'
+                auth_plugin='mysql_native_password'
             )
             self.curr = self.DB.cursor()
-        except:
+        except Exception as e:
             # 返回结果字典
             retu = {
-                'error': "数据库连接失败"
+                'error': f"数据库连接失败{e}"
             }
             return retu
         else:
@@ -45,15 +46,15 @@ class MysqlData:
             }
             return retu
 
-    def data_exists(self, data="spider"):
+    def data_exists(self, db_name: str):
         """
         判断数据库是否存在进行创建
-        :param data: 指定数据库游标切换
+        :param db_name: 指定数据库游标切换
         :return: 返回提示信息
         """
         # 创建数据库的sql(如果数据库存在就不创建，防止异常)
-        self.data = data
-        sql = f"CREATE DATABASE IF NOT EXISTS {data}"
+        self.data = db_name
+        sql = f"CREATE DATABASE IF NOT EXISTS {db_name}"
         try:
             # 执行创建数据库的sql
             self.curr.execute(sql)
@@ -61,13 +62,13 @@ class MysqlData:
         except:
             # 失败回滚，返回失败信息
             self.DB.rollback()
-            return f"判断数据库{data}是否存在失败"
+            return f"判断数据库{db_name}是否存在失败"
         else:
             # 数据库存在无需创建
-            self.curr.execute(f'use {data};')
-            return f"数据库{data}存在无需创建"
+            self.curr.execute(f'use {db_name};')
+            return f"数据库{db_name}切换成功数据库"
 
-    def table_exists(self, table='tteexxtt'):
+    def table_exists(self, table: str):
         """
         判断数据库表是否存在
         :param table: 指定数据表
@@ -88,15 +89,13 @@ class MysqlData:
 
         # 判断指定表名是否存在其中
         if table in tables_list:
-            fields = {'id': {}, 'url': {}, 'stime': {}}
-            return self.field_exists(fields=fields)
+            fields = {'id': {}}
+            return self.field_exists(fields=fields, table=table)
         else:
             # 创建表结构
             try:
                 sql = f"""CREATE TABLE {table}  (
-                              `id` int(0) NOT NULL AUTO_INCREMENT,
-                              `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                              `stime` datetime(0) NOT NULL,
+                              `id` bigint(0) NOT NULL,
                               PRIMARY KEY (`id`) USING BTREE
                             ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
                             """
@@ -107,31 +106,54 @@ class MysqlData:
                 self.DB.rollback()
                 return f"数据表{table}不存在进行创建表结构失败,请提供正确的spl语句"
 
-    def disconnect(self):
+    def query_data_name(self):
+        """
+
+        :return: 返回所有的数据库库名
+        """
+        self.curr.execute('SHOW DATABASES;')
+        result = self.curr.fetchall()
+        return result
+
+    def query_sheet_name(self, db_name: str):
+        """
+        table: 可指定查询数据库
+        :return: 返回数据库所有的表名
+        """
+        if db_name:
+            self.curr.execute('SHOW TABLES;')
+            result = self.curr.fetchall()
+            return result
+        else:
+            self.data_exists(db_name=db_name)
+            self.curr.execute('SHOW TABLES')
+            result = self.curr.fetchall()
+            return result
+
+    def disconnect(self, time: str = None, table: str = None):
         """
         关闭提供的链接以及游标
         :return: 返回提示信息
         """
         try:
-            sql = f"SELECT url FROM {self.table} WHERE stime >= '{self.ks_time}';"
+            self.curr.close()
+            self.DB.close()
+            return '关闭成功'
+            # sql = f"SELECT cve FROM {table} WHERE {time} >= '{self.ks_time}';"
             # sql = "SELECT * FROM eol WHERE stime >= '2023-04-11 17:16:10';"
-            self.curr.execute(sql)
-            result = self.curr.fetchall()
+            # self.curr.execute(sql)
+            # result = self.curr.fetchall()
         except:
             self.curr.close()
             self.DB.close()
             return '查询失败'
-        else:
-            self.curr.close()
-            self.DB.close()
-            return f"此次数据实例化{len(result)}"
 
-    def create_fields(self, field=str(), fields=list()):
+    def create_fields(self, field: str, fields: list, table: str):
         """
         实现数据表字段的添加
         :return:
         """
-        sql = f"ALTER TABLE `{self.data}`.`{self.table}` "
+        sql = f"ALTER TABLE `{self.data}`.`{table}` "
         if not len(fields):
             return "无需创建"
         try:
@@ -142,29 +164,28 @@ class MysqlData:
                 elif 'time' in k:
                     sql_new = sql + f"ADD COLUMN `{k}` datetime(0) NULL AFTER `{field}`;"
                     # sql_new = sql + f"ADD COLUMN `{k}` datetime(255) NULL ON UPDATE CURRENT_TIMESTAMP(255) AFTER `{field}`;"
-                elif k == 'id':
-                    sql_new = sql + f"ADD COLUMN `{k}` int(0) NOT NULL AUTO_INCREMENT FIRST,ADD PRIMARY KEY (`{k}`);"
+                elif k.endswith("id"):
+                    sql_new = sql + f"ADD COLUMN `{k}` bigint(0) NULL AFTER `{field}`;"
                 else:
                     sql_new = sql + f"ADD COLUMN `{k}` json NULL AFTER `{field}`;"
                 self.curr.execute(sql_new)
                 self.DB.commit()
-        except:
-            return f"{self.table}表结构字段添加创建失败"
+        except Exception as e:
+            return f"{table}表结构字段添加创建失败" + f"{e}"
         else:
-            return f"{self.table}字段添加创建成功"
+            return f"{table}字段添加创建成功"
 
-    def field_exists(self, fields=dict()):
+    def field_exists(self, fields: dict, table: str):
         """
         接收字段，判断字段是否存在，字段存在无需操作，字段不存在自行创建
         :param fields: 接收item字典判断字段是否存在
-        :param data: 指定库名
         :param table: 指定表名
         :return:
         """
         # 查询表结构所有字段
         try:
             sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'" % (
-                self.data, self.table)
+                self.data, table)
             self.curr.execute(sql)
             results = self.curr.fetchall()
         except:
@@ -182,14 +203,13 @@ class MysqlData:
         for field in fields:
             if not (field in results_list):
                 fields_list.append(field)
-
         # 待添加字段中存在需要添加字段，执行添加字段方法
         if fields_list:
-            return self.create_fields(field=results_list[-1], fields=fields_list)
+            return self.create_fields(field=results_list[-1], fields=fields_list, table=table)
         else:
-            return f'{self.table}表结构字段无需创建'
+            return f'{table}表结构字段无需创建'
 
-    def add_data(self, item):
+    def add_data(self, item, table):
         """
         添加数据
         :param item: 需要传递字典参数
@@ -200,19 +220,18 @@ class MysqlData:
         values = [item[key] for key in keys]
         # sql = f"insert into {self.table}({','.join(keys)}) values ({','.join(values)});"
         # sql语句
-        sql = f"insert into {self.table}({','.join(keys)}) values ({'%s,' * ((len(values) - 1))}%s);"
+        sql = f"insert into {table}({','.join(keys)}) values ({'%s,' * ((len(values) - 1))}%s);"
+
         try:
-            self.curr.execute(f'use {self.data}')
             self.curr.execute(sql, tuple(values))
             self.DB.commit()
-        except:
+        except Exception as e:
             self.DB.rollback()
-
-            return '数据实例化存储失败' + sql % tuple(values)
+            return '数据实例化存储失败' + sql % tuple(values) + f"{e}"
         else:
             return '数据实例化存储成功'
 
-    def price_exists(self, field=str(), price=None, field2=None, price2=None):
+    def price_exists(self, field=str(), price=None, field2=None, price2=None, table='table'):
         """
         验证数据是否存在，指定字段，传入字段查询数据
         :param field: 传入指定字段，字符串格式
@@ -233,7 +252,7 @@ class MysqlData:
             }
             return err
         if not field2:
-            sql = f"SELECT {field} FROM {self.table} where {field}=%s;"
+            sql = f"SELECT id FROM {table} where {field}=%s;"
             try:
                 # 执行查询语句
                 self.curr.execute(sql, (price,))
@@ -247,7 +266,8 @@ class MysqlData:
             if result:
                 err = {
                     'error': 102,
-                    'log': f'{price}数据已存在'
+                    'log': f'{price}数据已存在',
+                    'data': result
                 }
             else:
                 err = {
@@ -256,18 +276,31 @@ class MysqlData:
                 }
             return err
         else:
-            if not price2:
+            sql = f'SELECT id FROM {table} where `{field}` = "{price}" and `{field2}` = "{price2}";'
+            try:
+                # 执行查询语句
+                self.curr.execute(sql)
+                result = self.curr.fetchall()
+            except Exception as e:
                 err = {
-                    'error': 103,
-                    'log': "请指定查询数据字段名，一般使用url字段查询"
+                    'error': 104,
+                    'log': f'{field}字段 数据查询失败{str(e)}'
                 }
                 return err
+            if result:
+                err = {
+                    'error': 102,
+                    'log': f'{price}数据已存在',
+                    'data': result
+                }
+            else:
+                err = {
+                    'error': 101,
+                    'log': f'无{price}链接数据'
+                }
+            return err
 
-
-
-
-
-    def query_page(self, field=None, name=None, fields=None):
+    def query_time(self, field=None, name=None, fields=None, table='table'):
         """
         增量式更新功能情况
         :param name: 指定页数字段名称
@@ -277,7 +310,7 @@ class MysqlData:
         """
 
         if fields:
-            sql = f'SELECT MAX({name}) FROM {self.table} WHERE {fields} = "{field}";'
+            sql = f'SELECT MAX({name}) FROM {table} WHERE {fields} = "{field}";'
 
             try:
                 # 执行查询语句
@@ -288,11 +321,10 @@ class MysqlData:
 
                 return 404
             else:
-                result_list = [row for row in result]
-                result_list = [row for row in result_list[0]]
+                result_list = [row for row in result[0]][0]
                 return result_list
         else:
-            sql = f"SELECT MAX({name}) FROM {self.table};"
+            sql = f"SELECT MAX({name}) FROM {table};"
 
             try:
                 # 执行查询语句
@@ -304,7 +336,31 @@ class MysqlData:
             else:
                 result_list = [row for row in result]
                 result_list = [row for row in result_list[0]]
-                return result_list
+                return result_list[0]
+
+    def query_data(self, table, max_time, field):
+        sql = f"SELECT * FROM {table} WHERE {field} > '{max_time}';"
+        try:
+            # 执行查询语句
+            self.curr.execute(sql)
+            result = self.curr.fetchall()
+            # result = self.curr.fetchone()
+        except Exception as e:
+
+            return [404, e]
+        else:
+            result_list = [row for row in result]
+            return result_list
+
+    def delete_data(self, table, field, price):
+        sql = f"DELETE FROM {table} WHERE `{field}` = {price};"
+        try:
+            self.curr.execute(sql)
+            self.DB.commit()
+            return f"{price}数据删除成功"
+        except Exception as e:
+            self.DB.rollback()
+            return "数据删除失败" + f"错误信息{e}"
 
 
 if __name__ == '__main__':
@@ -313,7 +369,7 @@ if __name__ == '__main__':
     print(retu)
     if retu.get('db'):
         # 连接成功数据库，进入数据库和查看表结构
-        print(data.data_exists(data='spiders'))
+        print(data.data_exists(db_name='spiders'))
         print(data.table_exists(table='attgroups'))
         t = str(datetime.datetime.now())
         # 测试item数据
@@ -323,217 +379,8 @@ if __name__ == '__main__':
                                                  '"[1]https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
                                                  '{"name": "Comment Panda", "Description": '
                                                  '"[2]http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf"}]',
-                'Associated_Groups': '"Comment Crew, Comment Group, Comment Panda"',
-                'Created': '"31 May 2017"',
-                'Last_Modified': '"26 May 2021"',
-                'Software': '[{"ID": "S0017", "Name": "BISCUIT", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Command and Scripting InterpreterWindows Command '
-                            'ShellEncrypted ChannelAsymmetric CryptographyFallback '
-                            'ChannelsIngress Tool TransferInput CaptureKeyloggingProcess '
-                            'DiscoveryScreen CaptureSystem Information DiscoverySystem '
-                            'Owner/User Discovery"}, {"ID": "S0119", "Name": "Cachedump", '
-                            '"References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "OS Credential DumpingCached Domain Credentials"}, '
-                            '{"ID": "S0025", "Name": "CALENDAR", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Command and Scripting InterpreterWindows Command '
-                            'ShellWeb ServiceBidirectional Communication"}, {"ID": "S0026", '
-                            '"Name": "GLOOXMAIL", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Web ServiceBidirectional Communication"}, {"ID": '
-                            '"S0008", "Name": "gsecdump", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "OS Credential DumpingLSA SecretsOS Credential '
-                            'DumpingSecurity Account Manager"}, {"ID": "S0100", "Name": '
-                            '"ipconfig", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "System Network Configuration Discovery"}, {"ID": '
-                            '"S0121", "Name": "Lslsass", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "OS Credential DumpingLSASS Memory"}, {"ID": '
-                            '"S0002", "Name": "Mimikatz", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Access Token ManipulationSID-History '
-                            'InjectionAccount ManipulationBoot or Logon Autostart '
-                            'ExecutionSecurity Support ProviderCredentials from Password '
-                            'StoresCredentials from Web BrowsersCredentials from Password '
-                            'StoresCredentials from Password StoresWindows Credential '
-                            'ManagerOS Credential DumpingLSASS MemoryOS Credential '
-                            'DumpingSecurity Account ManagerOS Credential DumpingLSA '
-                            'SecretsOS Credential DumpingDCSyncRogue Domain ControllerSteal '
-                            'or Forge Authentication CertificatesSteal or Forge Kerberos '
-                            'TicketsGolden TicketSteal or Forge Kerberos TicketsSilver '
-                            'TicketUnsecured CredentialsPrivate KeysUse Alternate '
-                            'Authentication MaterialPass the TicketUse Alternate '
-                            'Authentication MaterialPass the Hash"}, {"ID": "S0039", "Name": '
-                            '"Net", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Account DiscoveryDomain AccountAccount '
-                            'DiscoveryLocal AccountCreate AccountDomain AccountCreate '
-                            'AccountLocal AccountIndicator RemovalNetwork Share Connection '
-                            'RemovalNetwork Share DiscoveryPassword Policy '
-                            'DiscoveryPermission Groups DiscoveryLocal GroupsPermission '
-                            'Groups DiscoveryDomain GroupsRemote ServicesSMB/Windows Admin '
-                            'SharesRemote System DiscoverySystem Network Connections '
-                            'DiscoverySystem Service DiscoverySystem ServicesService '
-                            'ExecutionSystem Time Discovery"}, {"ID": "S0122", "Name": '
-                            '"Pass-The-Hash Toolkit", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Use Alternate Authentication MaterialPass the '
-                            'Hash"}, {"ID": "S0012", "Name": "PoisonIvy", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Application Window DiscoveryBoot or Logon '
-                            'Autostart ExecutionActive SetupBoot or Logon Autostart '
-                            'ExecutionRegistry Run Keys / Startup FolderCommand and Scripting '
-                            'InterpreterWindows Command ShellCreate or Modify System '
-                            'ProcessWindows ServiceData from Local SystemData StagedLocal '
-                            'Data StagingEncrypted ChannelSymmetric CryptographyIngress Tool '
-                            'TransferInput CaptureKeyloggingModify RegistryObfuscated Files '
-                            'or InformationProcess InjectionDynamic-link Library '
-                            'InjectionRootkit"}, {"ID": "S0029", "Name": "PsExec", '
-                            '"References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Create AccountDomain AccountCreate or Modify '
-                            'System ProcessWindows ServiceLateral Tool TransferRemote '
-                            'ServicesSMB/Windows Admin SharesSystem ServicesService '
-                            'Execution"}, {"ID": "S0006", "Name": "pwdump", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "OS Credential DumpingSecurity Account Manager"}, '
-                            '{"ID": "S0345", "Name": "Seasalt", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report-appendix.zip", '
-                            '"https://www.mcafee.com/enterprise/en-us/assets/reports/rp-operation-oceansalt.pdf"], '
-                            '"Techniques": "Application Layer ProtocolWeb ProtocolsBoot or '
-                            'Logon Autostart ExecutionRegistry Run Keys / Startup '
-                            'FolderCommand and Scripting InterpreterWindows Command '
-                            'ShellCreate or Modify System ProcessWindows ServiceFile and '
-                            'Directory DiscoveryIndicator RemovalFile DeletionIngress Tool '
-                            'TransferMasqueradingMasquerade Task or ServiceObfuscated Files '
-                            'or InformationProcess Discovery"}, {"ID": "S0057", "Name": '
-                            '"Tasklist", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Process DiscoverySoftware DiscoverySecurity '
-                            'Software DiscoverySystem Service Discovery"}, {"ID": "S0109", '
-                            '"Name": "WEBC2", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"], '
-                            '"Techniques": "Command and Scripting InterpreterWindows Command '
-                            'ShellHijack Execution FlowDLL Search Order HijackingIngress Tool '
-                            'Transfer"}, {"ID": "S0123", "Name": "xCmd", "References": '
-                            '["https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report-appendix.zip"], '
-                            '"Techniques": "System ServicesService Execution"}]',
-                'Techniques_Used': '[{"Domain": "Enterprise", "id": "T1087.001", "Name": '
-                                   '"Account Discovery: Local Account", "Use": "APT1 used the '
-                                   'commands net localgroup,net user, and net group to find '
-                                   'accounts on the '
-                                   'system.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1583.001", "Name": '
-                                   '"Acquire Infrastructure: Domains", "Use": "APT1 has '
-                                   'registered hundreds of domains for use in '
-                                   'operations.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1560.001", "Name": '
-                                   '"Archive Collected Data: Archive via Utility", "Use": '
-                                   '"APT1 has used RAR to compress files before moving them '
-                                   'outside of the victim '
-                                   'network.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1119", "Name": '
-                                   '"Automated Collection", "Use": "APT1 used a batch script '
-                                   'to perform a series of discovery techniques and saves it '
-                                   'to a text '
-                                   'file.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1059.003", "Name": '
-                                   '"Command and Scripting Interpreter: Windows Command '
-                                   'Shell", "Use": "APT1 has used the Windows command shell '
-                                   'to execute commands, and batch scripting to automate '
-                                   'execution.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1584.001", "Name": '
-                                   '"Compromise Infrastructure: Domains", "Use": "APT1 '
-                                   'hijacked FQDNs associated with legitimate websites hosted '
-                                   'by hop '
-                                   'points.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1005", "Name": "Data '
-                                   'from Local System", "Use": "APT1 has collected files from '
-                                   'a local '
-                                   'victim.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1114.001", "Name": '
-                                   '"Email Collection: Local Email Collection", "Use": "APT1 '
-                                   'uses two utilities, GETMAIL and MAPIGET, to steal email. '
-                                   'GETMAIL extracts emails from archived Outlook .pst '
-                                   'files.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1114.002", "Name": '
-                                   '"Email Collection: Remote Email Collection", "Use": "APT1 '
-                                   'uses two utilities, GETMAIL and MAPIGET, to steal email. '
-                                   'MAPIGET steals email still on Exchange servers that has '
-                                   'not yet been '
-                                   'archived.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1585.002", "Name": '
-                                   '"Establish Accounts: Email Accounts", "Use": "APT1 has '
-                                   'created email accounts for later use in social '
-                                   'engineering, phishing, and when registering '
-                                   'domains.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1036.005", "Name": '
-                                   '"Masquerading: Match Legitimate Name or Location", "Use": '
-                                   '"The file name AcroRD32.exe, a legitimate process name '
-                                   "for Adobe's Acrobat Reader, was used by APT1 as a name "
-                                   'for '
-                                   'malware.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdfhttps://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report-appendix.zip"}, '
-                                   '{"Domain": "Enterprise", "id": "T1135", "Name": "Network '
-                                   'Share Discovery", "Use": "APT1 listed connected network '
-                                   'shares.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1588.001", "Name": '
-                                   '"Obtain Capabilities: Malware", "Use": "APT1 used '
-                                   'publicly available malware for privilege '
-                                   'escalation.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1588.002", "Name": '
-                                   '"Obtain Capabilities: Tool", "Use": "APT1 has used '
-                                   'various open-source tools for privilege escalation '
-                                   'purposes.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1003.001", "Name": "OS '
-                                   'Credential Dumping: LSASS Memory", "Use": "APT1 has been '
-                                   'known to use credential dumping using '
-                                   'Mimikatz.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1566.001", "Name": '
-                                   '"Phishing: Spearphishing Attachment", "Use": "APT1 has '
-                                   'sent spearphishing emails containing malicious '
-                                   'attachments.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1566.002", "Name": '
-                                   '"Phishing: Spearphishing Link", "Use": "APT1 has sent '
-                                   'spearphishing emails containing hyperlinks to malicious '
-                                   'files.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1057", "Name": "Process '
-                                   'Discovery", "Use": "APT1 gathered a list of running '
-                                   'processes on the system using tasklist '
-                                   '/v.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1021.001", "Name": '
-                                   '"Remote Services: Remote Desktop Protocol", "Use": "The '
-                                   'APT1 group is known to have used RDP during '
-                                   'operations.https://www.fireeye.com/blog/threat-research/2014/05/the-pla-and-the-800am-500pm-work-day-fireeye-confirms-dojs-findings-on-apt1-intrusion-activity.html"}, '
-                                   '{"Domain": "Enterprise", "id": "T1016", "Name": "System '
-                                   'Network Configuration Discovery", "Use": "APT1 used the '
-                                   'ipconfig /all command to gather network configuration '
-                                   'information.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1049", "Name": "System '
-                                   'Network Connections Discovery", "Use": "APT1 used the net '
-                                   'use command to get a listing on network '
-                                   'connections.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1007", "Name": "System '
-                                   'Service Discovery", "Use": "APT1 used the commands net '
-                                   'start and tasklist to get a listing of the services on '
-                                   'the '
-                                   'system.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}, '
-                                   '{"Domain": "Enterprise", "id": "T1550.002", "Name": "Use '
-                                   'Alternate Authentication Material: Pass the Hash", "Use": '
-                                   '"The APT1 group is known to have used pass the '
-                                   'hash.https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf"}]',
-                'description_body': '"APT1 is a Chinese threat group that has been attributed '
-                                    'to the 2nd Bureau of the People\\u2019s Liberation Army '
-                                    '(PLA) General Staff Department\\u2019s (GSD) 3rd '
-                                    'Department, commonly known by its Military Unit Cover '
-                                    'Designator (MUCD) as Unit 61398. "',
-                'name': '"APT1"',
-                'stime': t,
-                'title_id': '"G0006"',
-                'url': 'https://attack.mitre.org/groups/G0006/'}
+                'Associated_Groups': '"Comment Crew, Comment Group, Comment Panda"'}
+
         # 数据库和数据表存在或创建完成后,传入item对象，创建剩余的字段结构
         print(data.field_exists(fields=item))
 
